@@ -145,15 +145,15 @@
 **설명**: `.env` 파일 구성, `config/env.js` 환경변수 로드, `config/database.js` pg 커넥션 풀 설정
 
 **의존성**
-- [ ] BE-01 완료
-- [ ] DB-02 완료
+- [x] BE-01 완료
+- [x] DB-02 완료
 
 **완료 조건**
-- [ ] `backend/.env` 파일 생성 (NODE_ENV, PORT, DB_*, JWT_SECRET, JWT_EXPIRY, CORS_ORIGIN 포함)
-- [ ] `config/env.js` — 필수 환경변수 누락 시 서버 시작 실패 처리
-- [ ] `config/database.js` — pg Pool 생성, 커넥션 풀 설정 (max: 20 이상)
-- [ ] DB 연결 테스트 쿼리 (`SELECT NOW()`) 성공 확인
-- [ ] DB 연결 실패 시 적절한 오류 로그 출력 확인
+- [x] `backend/.env` 파일 생성 (NODE_ENV, PORT, DB_*, JWT_SECRET, JWT_EXPIRY, CORS_ORIGIN 포함)
+- [x] `config/env.js` — 필수 환경변수 누락 시 서버 시작 실패 처리
+- [x] `config/database.js` — pg Pool 생성, 커넥션 풀 설정 (max: 20 이상)
+- [x] DB 연결 테스트 쿼리 (`SELECT NOW()`) 성공 확인
+- [x] DB 연결 실패 시 적절한 오류 로그 출력 확인
 
 ---
 
@@ -673,7 +673,7 @@
 
 ### Backend
 - [x] BE-01: 프로젝트 초기화
-- [ ] BE-02: 환경변수 및 DB 연결 설정
+- [x] BE-02: 환경변수 및 DB 연결 설정
 - [ ] BE-03: 공통 유틸리티 구현
 - [ ] BE-04: 미들웨어 구현
 - [ ] BE-05: Repository 레이어 구현

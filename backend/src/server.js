@@ -1,14 +1,16 @@
 'use strict';
 
-require('dotenv').config();
-
+const env = require('./config/env');
+const db = require('./config/database');
 const app = require('./app');
+const logger = require('./utils/logger');
 
-const PORT = process.env.PORT || 3000;
+async function startServer() {
+  await db.connect();
+  const server = app.listen(env.port, () => {
+    logger.info(`TodoList API server running on port ${env.port}`);
+  });
+  return server;
+}
 
-const server = app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`TodoList API server is running on port ${PORT}`);
-});
-
-module.exports = server;
+startServer();
