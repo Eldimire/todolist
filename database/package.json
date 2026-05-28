@@ -1,0 +1,12 @@
+{
+  "name": "todolist-database",
+  "version": "1.0.0",
+  "description": "TodoList database seeds",
+  "scripts": {
+    "seed": "node seeds/seed.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "pg": "^8.13.1"
+  }
+}
