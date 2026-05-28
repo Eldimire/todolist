@@ -124,19 +124,19 @@
 **설명**: `backend/` 디렉토리 생성, `package.json` 설정, 디렉토리 구조 생성, ESLint·Prettier 설정
 
 **의존성**
-- [ ] 없음 (시작점)
+- [x] 없음 (시작점)
 
 **완료 조건**
-- [ ] `backend/` 디렉토리 및 하위 구조 생성 완료
+- [x] `backend/` 디렉토리 및 하위 구조 생성 완료
   ```
   backend/src/{route,controller,service,repository,middleware,config,utils,constants,db}
   ```
-- [ ] `package.json` 생성, 의존성 설치 완료
+- [x] `package.json` 생성, 의존성 설치 완료
   - 필수: `express`, `pg`, `jsonwebtoken`, `bcrypt`, `dotenv`, `cors`
   - 개발: `eslint`, `prettier`, `jest`, `supertest`, `nodemon`
-- [ ] `.eslintrc.js`, `.prettierrc` 설정 완료
-- [ ] `npm run dev` (nodemon) 실행 확인
-- [ ] `backend/.env.example` 파일 생성 (실제 값 없이 키 목록만)
+- [x] `.eslintrc.js`, `.prettierrc` 설정 완료
+- [x] `npm run dev` (nodemon) 실행 확인
+- [x] `backend/.env.example` 파일 생성 (실제 값 없이 키 목록만)
 
 ---
 
@@ -672,7 +672,7 @@
 - [x] DB-03: 테스트 시드 데이터 작성
 
 ### Backend
-- [ ] BE-01: 프로젝트 초기화
+- [x] BE-01: 프로젝트 초기화
 - [ ] BE-02: 환경변수 및 DB 연결 설정
 - [ ] BE-03: 공통 유틸리티 구현
 - [ ] BE-04: 미들웨어 구현
