@@ -178,19 +178,19 @@
 **설명**: JWT 인증 미들웨어, 에러 핸들러 미들웨어 구현
 
 **의존성**
-- [ ] BE-03 완료
+- [x] BE-03 완료
 
 **완료 조건**
-- [ ] `middleware/auth.middleware.js` — `verifyToken()` 구현
-  - [ ] `Authorization: Bearer <token>` 헤더 파싱
-  - [ ] 토큰 없음 → HTTP 401 반환
-  - [ ] 토큰 유효하지 않음 → HTTP 401 반환
-  - [ ] 토큰 만료 → HTTP 401 반환
-  - [ ] 검증 성공 시 `req.user = { id, email }` 설정
-- [ ] `middleware/errorHandler.middleware.js` — `handleError()` 구현
-  - [ ] 모든 에러를 `{ code, message }` JSON 스키마로 변환
-  - [ ] 알 수 없는 에러 → HTTP 500 처리
-- [ ] 단위 테스트: 토큰 없음·만료·유효 케이스 통과
+- [x] `middleware/auth.middleware.js` — `verifyToken()` 구현
+  - [x] `Authorization: Bearer <token>` 헤더 파싱
+  - [x] 토큰 없음 → HTTP 401 반환
+  - [x] 토큰 유효하지 않음 → HTTP 401 반환
+  - [x] 토큰 만료 → HTTP 401 반환
+  - [x] 검증 성공 시 `req.user = { id, email }` 설정
+- [x] `middleware/errorHandler.middleware.js` — `handleError()` 구현
+  - [x] 모든 에러를 `{ code, message }` JSON 스키마로 변환
+  - [x] 알 수 없는 에러 → HTTP 500 처리
+- [x] 단위 테스트: 토큰 없음·만료·유효 케이스 통과
 
 ---
 
@@ -675,7 +675,7 @@
 - [x] BE-01: 프로젝트 초기화
 - [x] BE-02: 환경변수 및 DB 연결 설정
 - [x] BE-03: 공통 유틸리티 구현
-- [ ] BE-04: 미들웨어 구현
+- [x] BE-04: 미들웨어 구현
 - [ ] BE-05: Repository 레이어 구현
 - [ ] BE-06: Service 레이어 구현
 - [ ] BE-07: 인증 API 구현
