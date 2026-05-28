@@ -413,20 +413,20 @@
 **설명**: `frontend/` 디렉토리 생성, Vite + React 19 + TypeScript 초기화, 디렉토리 구조 생성
 
 **의존성**
-- [ ] 없음 (시작점)
+- [x] 없음 (시작점)
 
 **완료 조건**
-- [ ] `npm create vite@latest frontend -- --template react-ts` 실행 완료
-- [ ] `frontend/src/` 하위 디렉토리 구조 생성
+- [x] `npm create vite@latest frontend -- --template react-ts` 실행 완료
+- [x] `frontend/src/` 하위 디렉토리 구조 생성
   ```
   components/{common,layout,auth,todo,category}
   pages, hooks, stores, api, types, utils, constants, styles
   ```
-- [ ] 의존성 설치 완료
+- [x] 의존성 설치 완료
   - 필수: `zustand`, `@tanstack/react-query`, `axios`, `react-router-dom`
   - 개발: `eslint`, `prettier`, `vitest`, `@testing-library/react`, `@playwright/test`
-- [ ] `npm run dev` 실행 후 브라우저 접속 확인 (`http://localhost:5173`)
-- [ ] `frontend/.env.example` 생성 (`VITE_API_BASE_URL`, `VITE_APP_NAME`)
+- [x] `npm run dev` 실행 후 브라우저 접속 확인 (`http://localhost:5173`)
+- [x] `frontend/.env.example` 생성 (`VITE_API_BASE_URL`, `VITE_APP_NAME`)
 
 ---
 
@@ -435,24 +435,24 @@
 **설명**: TypeScript 타입, API 상수, 공통 유틸리티 함수 구현
 
 **의존성**
-- [ ] FE-01 완료
+- [x] FE-01 완료
 
 **완료 조건**
 
 **types/**
-- [ ] `auth.types.ts` — `User`, `LoginRequest`, `LoginResponse`, `SignupRequest`
-- [ ] `todo.types.ts` — `Todo`, `TodoStatus`, `CreateTodoRequest`, `UpdateTodoRequest`
-- [ ] `category.types.ts` — `Category`, `CreateCategoryRequest`
-- [ ] `api.types.ts` — `ApiError({ code, message })`, `ApiResponse<T>`
+- [x] `auth.types.ts` — `User`, `LoginRequest`, `LoginResponse`, `SignupRequest`
+- [x] `todo.types.ts` — `Todo`, `TodoStatus`, `CreateTodoRequest`, `UpdateTodoRequest`
+- [x] `category.types.ts` — `Category`, `CreateCategoryRequest`
+- [x] `api.types.ts` — `ApiError({ code, message })`, `ApiResponse<T>`
 
 **constants/**
-- [ ] `api.ts` — `API_BASE_URL`, 엔드포인트 경로 상수
-- [ ] `queryKeys.ts` — TanStack Query Key 상수 (`['todos', userId]` 등)
+- [x] `api.ts` — `API_BASE_URL`, 엔드포인트 경로 상수
+- [x] `queryKeys.ts` — TanStack Query Key 상수 (`['todos', userId]` 등)
 
 **utils/**
-- [ ] `dateUtils.ts` — KST 기준 오늘 날짜 계산, 날짜 포맷 함수
-- [ ] `validation.ts` — 이메일 형식, 비밀번호 8자 이상, 날짜 범위(endDate >= startDate) 검증
-- [ ] `errorHandler.ts` — API 에러 코드 → 사용자 표시 메시지 변환
+- [x] `dateUtils.ts` — KST 기준 오늘 날짜 계산, 날짜 포맷 함수
+- [x] `validation.ts` — 이메일 형식, 비밀번호 8자 이상, 날짜 범위(endDate >= startDate) 검증
+- [x] `errorHandler.ts` — API 에러 코드 → 사용자 표시 메시지 변환
 
 ---
 
@@ -461,15 +461,15 @@
 **설명**: Axios 인스턴스 생성, 인터셉터 설정 (토큰 자동 주입, 401 처리)
 
 **의존성**
-- [ ] FE-02 완료
+- [x] FE-02 완료
 
 **완료 조건**
-- [ ] `api/client.ts` — Axios 인스턴스 생성 (`baseURL = VITE_API_BASE_URL`)
-- [ ] 요청 인터셉터 — `Authorization: Bearer <token>` 헤더 자동 주입
-- [ ] 응답 인터셉터 — 401 수신 시 로그인 페이지 리다이렉트
-- [ ] `api/authClient.ts` — `signup`, `login`, `logout`, `updateProfile` 함수
-- [ ] `api/categoryClient.ts` — `getCategories`, `createCategory`, `updateCategory`, `deleteCategory` 함수
-- [ ] `api/todoClient.ts` — `getTodos(filter?)`, `createTodo`, `updateTodo`, `deleteTodo`, `toggleComplete` 함수
+- [x] `api/client.ts` — Axios 인스턴스 생성 (`baseURL = VITE_API_BASE_URL`)
+- [x] 요청 인터셉터 — `Authorization: Bearer <token>` 헤더 자동 주입
+- [x] 응답 인터셉터 — 401 수신 시 로그인 페이지 리다이렉트
+- [x] `api/authClient.ts` — `signup`, `login`, `logout`, `updateProfile` 함수
+- [x] `api/categoryClient.ts` — `getCategories`, `createCategory`, `updateCategory`, `deleteCategory` 함수
+- [x] `api/todoClient.ts` — `getTodos(filter?)`, `createTodo`, `updateTodo`, `deleteTodo`, `toggleComplete` 함수
 
 ---
 
@@ -687,9 +687,9 @@
 - [x] BE-13: v2 설정 API 구현 *(v2)*
 
 ### Frontend
-- [ ] FE-01: 프로젝트 초기화
-- [ ] FE-02: 타입 정의, 상수, 유틸리티
-- [ ] FE-03: API Client 기반 설정
+- [x] FE-01: 프로젝트 초기화
+- [x] FE-02: 타입 정의, 상수, 유틸리티
+- [x] FE-03: API Client 기반 설정
 - [ ] FE-04: Zustand Store 구현
 - [ ] FE-05: 인증 기능 (Hook·컴포넌트)
 - [ ] FE-06: 인증 화면 구현 (S-01, S-02)
