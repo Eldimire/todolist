@@ -235,28 +235,28 @@
 **설명**: Auth·Category·Todo·User Service 구현 (비즈니스 규칙 BR-01~06 적용)
 
 **의존성**
-- [ ] BE-03 완료
-- [ ] BE-04 완료
-- [ ] BE-05 완료
+- [x] BE-03 완료
+- [x] BE-04 완료
+- [x] BE-05 완료
 
 **완료 조건**
 
 **auth.service.js** (UC-001~004)
-- [ ] `signup({ email, password, name })` — 이메일 중복 확인(409), bcrypt 해싱, 사용자 생성, 기본 카테고리 자동 생성 (BR-04)
-- [ ] `login({ email, password })` — 이메일 조회(401), 비밀번호 비교(401), JWT 발급, language·themeMode 포함 반환
-- [ ] `updateProfile(userId, { name?, password? })` — 비밀번호 변경 시 bcrypt 재해싱
+- [x] `signup({ email, password, name })` — 이메일 중복 확인(409), bcrypt 해싱, 사용자 생성, 기본 카테고리 자동 생성 (BR-04)
+- [x] `login({ email, password })` — 이메일 조회(401), 비밀번호 비교(401), JWT 발급, language·themeMode 포함 반환
+- [x] `updateProfile(userId, { name?, password? })` — 비밀번호 변경 시 bcrypt 재해싱
 
 **category.service.js** (UC-005~007)
-- [ ] `createCategory(userId, { name })` — 카테고리 생성 (BR-02 소유권 적용)
-- [ ] `updateCategory(userId, categoryId, { name })` — isDefault=true 수정 시도 → HTTP 422 (BR-04)
-- [ ] `deleteCategory(userId, categoryId)` — isDefault=true 삭제 시도 → HTTP 422 (BR-04), 하위 할일 기본 카테고리로 재지정 후 삭제
+- [x] `createCategory(userId, { name })` — 카테고리 생성 (BR-02 소유권 적용)
+- [x] `updateCategory(userId, categoryId, { name })` — isDefault=true 수정 시도 → HTTP 422 (BR-04)
+- [x] `deleteCategory(userId, categoryId)` — isDefault=true 삭제 시도 → HTTP 422 (BR-04), 하위 할일 기본 카테고리로 재지정 후 삭제
 
 **todo.service.js** (UC-008~017)
-- [ ] `createTodo(userId, { title, description?, categoryId?, startDate, endDate })` — 카테고리 미지정 시 기본 카테고리 자동 적용 (BR-03), 날짜 유효성 검증 (BR-05)
-- [ ] `updateTodo(userId, todoId, fields)` — 소유권 확인 (BR-02), 날짜 유효성 검증 (BR-05)
-- [ ] `deleteTodo(userId, todoId)` — 소유권 확인 (BR-02)
-- [ ] `toggleComplete(userId, todoId)` — isCompleted 토글, 완료 취소 시 날짜 기반 상태 재계산 (BR-06)
-- [ ] `getTodos(userId, filter)` — 전체·카테고리별·상태별 필터 처리 (UC-012~017, KST 기준)
+- [x] `createTodo(userId, { title, description?, categoryId?, startDate, endDate })` — 카테고리 미지정 시 기본 카테고리 자동 적용 (BR-03), 날짜 유효성 검증 (BR-05)
+- [x] `updateTodo(userId, todoId, fields)` — 소유권 확인 (BR-02), 날짜 유효성 검증 (BR-05)
+- [x] `deleteTodo(userId, todoId)` — 소유권 확인 (BR-02)
+- [x] `toggleComplete(userId, todoId)` — isCompleted 토글, 완료 취소 시 날짜 기반 상태 재계산 (BR-06)
+- [x] `getTodos(userId, filter)` — 전체·카테고리별·상태별 필터 처리 (UC-012~017, KST 기준)
 
 ---
 
@@ -677,7 +677,7 @@
 - [x] BE-03: 공통 유틸리티 구현
 - [x] BE-04: 미들웨어 구현
 - [x] BE-05: Repository 레이어 구현
-- [ ] BE-06: Service 레이어 구현
+- [x] BE-06: Service 레이어 구현
 - [ ] BE-07: 인증 API 구현
 - [ ] BE-08: 카테고리 API 구현
 - [ ] BE-09: 할일 API 구현
