@@ -162,14 +162,14 @@
 **설명**: JWT 토큰 생성·검증, bcrypt 해싱, 로거, 에러 코드 정의
 
 **의존성**
-- [ ] BE-01 완료
+- [x] BE-01 완료
 
 **완료 조건**
-- [ ] `utils/jwt.js` — `generateToken(payload)`, `verifyToken(token)` 구현 및 단위 테스트 통과
-- [ ] `utils/hash.js` — `hashPassword(plain)`, `comparePassword(plain, hash)` 구현 및 단위 테스트 통과
-- [ ] `utils/logger.js` — ERROR·WARN·INFO·DEBUG 레벨 로거, 민감정보(비밀번호·토큰) 로그 미포함 확인
-- [ ] `utils/errorCodes.js` — 전체 에러 코드 상수 정의 완료
-- [ ] `constants/httpStatus.js` — HTTP 상태 코드 상수 정의 (200·201·400·401·403·404·409·422)
+- [x] `utils/jwt.js` — `generateToken(payload)`, `verifyToken(token)` 구현 및 단위 테스트 통과
+- [x] `utils/hash.js` — `hashPassword(plain)`, `comparePassword(plain, hash)` 구현 및 단위 테스트 통과
+- [x] `utils/logger.js` — ERROR·WARN·INFO·DEBUG 레벨 로거, 민감정보(비밀번호·토큰) 로그 미포함 확인
+- [x] `utils/errorCodes.js` — 전체 에러 코드 상수 정의 완료
+- [x] `constants/httpStatus.js` — HTTP 상태 코드 상수 정의 (200·201·400·401·403·404·409·422)
 
 ---
 
@@ -674,7 +674,7 @@
 ### Backend
 - [x] BE-01: 프로젝트 초기화
 - [x] BE-02: 환경변수 및 DB 연결 설정
-- [ ] BE-03: 공통 유틸리티 구현
+- [x] BE-03: 공통 유틸리티 구현
 - [ ] BE-04: 미들웨어 구현
 - [ ] BE-05: Repository 레이어 구현
 - [ ] BE-06: Service 레이어 구현
