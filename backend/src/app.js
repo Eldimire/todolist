@@ -2,6 +2,8 @@
 
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
 const authRouter = require('./route/auth.route');
 const userRouter = require('./route/user.route');
 const categoryRouter = require('./route/category.route');
@@ -12,6 +14,8 @@ const app = express();
 
 app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:5173' }));
 app.use(express.json());
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // 헬스체크
 app.get('/', (_req, res) => {

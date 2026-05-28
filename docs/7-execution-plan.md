@@ -37,13 +37,13 @@
     └── [BE-04] 미들웨어
             ├── [BE-05] Repository (User/Category/Todo)  ← BE-02 완료 필요
             │       └── [BE-06] Service (Auth/Category/Todo)  ← BE-03·04 완료 필요
-            │               └── [BE-07] Controller·Router (Auth)
+            │               └── [BE-07] Controller·Router (Auth + Users)
             │               └── [BE-08] Controller·Router (Category)
             │               └── [BE-09] Controller·Router (Todo)
-            │               └── [BE-10] Controller·Router (User)
-            └── [BE-11] Express 앱 통합  ← BE-07~10 완료 필요
-                    └── [BE-12] 통합 검증
-                    └── [BE-13] .env 설정 완성
+            └── [BE-10] Express 앱 통합  ← BE-07~09 완료 필요
+                    └── [BE-11] 백엔드 통합 검증
+                    └── [BE-12] .env 설정 완성
+                    └── [BE-13] v2 설정 API (Language·Theme)
 
 [FE-01] 프로젝트 초기화
     ├── [FE-02] 타입·상수·유틸리티
@@ -323,8 +323,8 @@
 - [x] `PATCH /api/todos/:id/complete` — 완료 처리 토글 (200, 인증 필요)
 - [x] `GET /api/todos` — 전체 할일 조회 (200, 인증 필요)
 - [x] `GET /api/todos?categoryId=:id` — 카테고리별 조회 (200)
-- [x] `GET /api/todos?status=not-started` — 시작 전 조회 (KST 기준)
-- [x] `GET /api/todos?status=in-progress` — 진행 중 조회 (KST 기준)
+- [x] `GET /api/todos?status=not_started` — 시작 전 조회 (KST 기준)
+- [x] `GET /api/todos?status=in_progress` — 진행 중 조회 (KST 기준)
 - [x] `GET /api/todos?status=completed` — 완료 조회
 - [x] `GET /api/todos?status=overdue` — 기한 초과 조회 (KST 기준)
 

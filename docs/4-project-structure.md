@@ -12,6 +12,7 @@
 | v1.0.0 | 2026-05-27 | 최초 문서 작성 (공통 최상위 원칙, 의존성/레이어 원칙, 코드/네이밍 원칙, 테스트/품질 원칙, 설정/보안/운영 원칙, 프론트엔드/백엔드 디렉토리 구조) | 신규 |
 | v1.0.1 | 2026-05-27 | 백엔드 필수 환경변수에 CORS_ORIGIN 추가 | 수정 |
 | v1.0.2 | 2026-05-27 | TanStack Query 명칭 통일, PostgreSQL 버전 명시, Prisma 금지 문구 추가 | 수정 |
+| v1.0.3 | 2026-05-28 | 백엔드 디렉토리 구조를 실제 구현에 맞게 업데이트 (settings/user controller 통합, validation middleware 제거, database/ 위치 수정, 테스트 구조 반영) | 수정 |
 
 ---
 
@@ -510,142 +511,117 @@ frontend/
 backend/
 ├── src/
 │   ├── route/                    # Express 라우트 정의
-│   │   ├── auth.route.js        # 인증 API 라우트
+│   │   ├── auth.route.js        # 인증 API 라우트 (signup, login, logout)
 │   │   ├── todo.route.js        # 할일 API 라우트
 │   │   ├── category.route.js    # 카테고리 API 라우트
-│   │   ├── user.route.js        # 사용자 정보 API 라우트
-│   │   ├── settings.route.js    # 설정 API 라우트 (v2)
-│   │   └── index.js             # 모든 라우트 통합
+│   │   └── user.route.js        # 사용자 정보 API 라우트 (me, me/language, me/theme)
 │   │
 │   ├── controller/               # HTTP 요청 처리 로직
-│   │   ├── auth.controller.js   # 인증 컨트롤러
+│   │   ├── auth.controller.js   # 인증 + 사용자 설정 컨트롤러
 │   │   │   ├── signup()         # F-AUTH-001 회원가입
 │   │   │   ├── login()          # F-AUTH-002 로그인
 │   │   │   ├── logout()         # F-AUTH-003 로그아웃
-│   │   │   └── updateProfile()  # F-AUTH-004 내 정보 수정
+│   │   │   ├── updateProfile()  # F-AUTH-004 내 정보 수정 (이름·비밀번호)
+│   │   │   ├── updateLanguage() # UC-018 언어 설정 (v2)
+│   │   │   └── updateTheme()    # UC-019 테마 설정 (v2)
 │   │   ├── todo.controller.js   # 할일 컨트롤러
 │   │   │   ├── createTodo()     # F-TODO-001 할일 등록
 │   │   │   ├── updateTodo()     # F-TODO-002 할일 수정
 │   │   │   ├── deleteTodo()     # F-TODO-003 할일 삭제
 │   │   │   ├── toggleComplete() # F-TODO-004 완료 처리
-│   │   │   ├── getTodos()       # F-TODO-005 전체 조회
-│   │   │   ├── getTodosByCategory() # F-TODO-006 카테고리별 조회
-│   │   │   └── getTodosByStatus()   # F-TODO-007~010 상태별 조회
-│   │   ├── category.controller.js
-│   │   │   ├── createCategory()     # F-CAT-001 카테고리 등록
-│   │   │   ├── updateCategory()     # F-CAT-002 카테고리 수정
-│   │   │   └── deleteCategory()     # F-CAT-003 카테고리 삭제
-│   │   ├── user.controller.js
-│   │   │   └── getProfile()     # 사용자 정보 조회
-│   │   ├── settings.controller.js   # v2 설정 컨트롤러
-│   │   │   ├── updateLanguage()
-│   │   │   └── updateTheme()
-│   │   └── ...
+│   │   │   └── getTodos()       # F-TODO-005~010 조회 (필터: categoryId, status)
+│   │   └── category.controller.js
+│   │       ├── getCategories()      # F-CAT-004 카테고리 조회
+│   │       ├── createCategory()     # F-CAT-001 카테고리 등록
+│   │       ├── updateCategory()     # F-CAT-002 카테고리 수정
+│   │       └── deleteCategory()     # F-CAT-003 카테고리 삭제
 │   │
 │   ├── service/                  # 비즈니스 로직
-│   │   ├── auth.service.js      # 인증 서비스
-│   │   │   ├── signup()         # 회원가입 로직
-│   │   │   ├── login()          # 로그인 로직
-│   │   │   ├── validatePassword() # 비밀번호 검증
-│   │   │   └── ...
+│   │   ├── auth.service.js      # 인증 + 사용자 설정 서비스
+│   │   │   ├── signup()         # 회원가입 로직 (기본 카테고리 자동 생성)
+│   │   │   ├── login()          # 로그인 로직 (language·themeMode 포함 반환)
+│   │   │   ├── updateProfile()  # 프로필 수정 (이름·비밀번호)
+│   │   │   ├── updateLanguage() # 언어 설정 저장 (v2)
+│   │   │   └── updateTheme()    # 테마 설정 저장 (v2)
 │   │   ├── todo.service.js      # 할일 서비스
 │   │   │   ├── createTodo()     # 할일 생성 (BR-03, BR-05 적용)
 │   │   │   ├── updateTodo()     # 할일 수정 (BR-05 적용)
-│   │   │   ├── calculateStatus() # 할일 상태 계산 (BR-06)
-│   │   │   ├── getTodos()       # 할일 조회 (필터 포함)
-│   │   │   └── ...
-│   │   ├── category.service.js  # 카테고리 서비스
-│   │   │   ├── createCategory() # 카테고리 생성 (BR-04)
-│   │   │   ├── deleteCategory() # 카테고리 삭제 (BR-04 적용)
-│   │   │   └── ...
-│   │   ├── user.service.js      # 사용자 서비스
-│   │   │   ├── createUser()
-│   │   │   ├── updateUser()
-│   │   │   └── ...
-│   │   └── ...
+│   │   │   ├── deleteTodo()     # 할일 삭제 (BR-02 소유권 확인)
+│   │   │   ├── toggleComplete() # 완료 토글 (BR-06 상태 재계산)
+│   │   │   └── getTodos()       # 할일 조회 (필터: categoryId, status)
+│   │   └── category.service.js  # 카테고리 서비스
+│   │       ├── getCategories()  # 카테고리 목록 조회
+│   │       ├── createCategory() # 카테고리 생성
+│   │       ├── updateCategory() # 카테고리 수정 (BR-04: 기본 카테고리 수정 불가)
+│   │       └── deleteCategory() # 카테고리 삭제 (BR-04, 하위 할일 재지정)
 │   │
 │   ├── repository/               # 데이터 접근 계층
 │   │   ├── user.repository.js
 │   │   │   ├── findByEmail()
 │   │   │   ├── findById()
 │   │   │   ├── create()
-│   │   │   ├── update()
-│   │   │   └── ...
+│   │   │   └── update()         # name, password, language, themeMode 지원
 │   │   ├── todo.repository.js
 │   │   │   ├── create()
 │   │   │   ├── findById()
 │   │   │   ├── findByUserId()
-│   │   │   ├── findByUserIdAndStatus() # 상태별 조회
+│   │   │   ├── findByUserIdAndCategory()
+│   │   │   ├── findByUserIdAndStatus() # status: not_started/in_progress/completed/overdue
 │   │   │   ├── update()
-│   │   │   ├── delete()
-│   │   │   └── ...
-│   │   ├── category.repository.js
-│   │   │   ├── create()
-│   │   │   ├── findById()
-│   │   │   ├── findByUserId()
-│   │   │   ├── update()
-│   │   │   ├── delete()
-│   │   │   └── ...
-│   │   └── ...
+│   │   │   ├── updateCategory() # 카테고리 재지정 (카테고리 삭제 시 사용)
+│   │   │   └── deleteById()
+│   │   └── category.repository.js
+│   │       ├── create()
+│   │       ├── findById()
+│   │       ├── findByUserId()
+│   │       ├── findDefaultByUserId()
+│   │       ├── update()
+│   │       └── deleteById()
 │   │
 │   ├── middleware/               # Express 미들웨어
-│   │   ├── auth.middleware.js   # JWT 검증 미들웨어
-│   │   │   └── verifyToken()    # 토큰 검증, req.user 설정
-│   │   ├── errorHandler.middleware.js  # 에러 처리 미들웨어
-│   │   │   └── handleError()    # 에러 → HTTP 응답 변환
-│   │   ├── validation.middleware.js    # 입력값 검증 미들웨어
-│   │   │   ├── validateEmail()
-│   │   │   ├── validatePassword()
-│   │   │   └── ...
-│   │   └── ...
+│   │   ├── auth.middleware.js   # JWT 검증 미들웨어 (req.user = { id, email } 설정)
+│   │   └── errorHandler.middleware.js  # 에러 → { code, message } JSON 응답 변환
 │   │
 │   ├── config/                   # 설정 파일
-│   │   ├── database.js          # DB 연결 설정 (pg 풀링)
-│   │   ├── env.js               # 환경변수 로드
-│   │   └── ...
+│   │   ├── database.js          # DB 연결 설정 (pg Pool, max: 20)
+│   │   └── env.js               # 환경변수 로드 및 필수값 검증
 │   │
 │   ├── utils/                    # 유틸리티 함수
 │   │   ├── jwt.js               # JWT 토큰 생성/검증
-│   │   ├── hash.js              # 비밀번호 해싱 (bcrypt)
-│   │   ├── logger.js            # 로깅
-│   │   ├── errorCodes.js        # 에러 코드 정의
-│   │   └── ...
+│   │   ├── hash.js              # 비밀번호 해싱 (bcrypt, saltRounds: 10)
+│   │   ├── logger.js            # 로깅 (민감정보 필터링)
+│   │   ├── errorCodes.js        # 에러 코드 상수 정의
+│   │   └── AppError.js          # 커스텀 에러 클래스
 │   │
 │   ├── constants/                # 상수 정의
-│   │   ├── httpStatus.js        # HTTP 상태 코드
-│   │   ├── errorMessages.js     # 에러 메시지
-│   │   ├── businessRules.js     # 비즈니스 규칙 상수
-│   │   └── ...
+│   │   └── httpStatus.js        # HTTP 상태 코드 (200·201·400·401·403·404·409·422·500)
 │   │
-│   ├── db/                       # 데이터베이스 관련
-│   │   ├── migrations/          # DB 마이그레이션 스크립트
-│   │   │   ├── 001_initial_schema.sql
-│   │   │   ├── 002_add_language_theme.sql  # v2
-│   │   │   └── ...
-│   │   ├── seeds/               # 데이터 시드 (테스트 데이터)
-│   │   │   └── seed.js
-│   │   └── schema.sql           # 전체 DB 스키마
-│   │
-│   ├── app.js                    # Express 앱 설정
-│   └── server.js                 # 서버 시작점
+│   ├── app.js                    # Express 앱 설정 (CORS, 라우터, 에러 핸들러, Swagger UI)
+│   └── server.js                 # 서버 시작점 (DB 연결 후 listen)
 │
 ├── tests/                        # 테스트 파일
-│   ├── unit/
-│   │   ├── service/
-│   │   ├── repository/
-│   │   └── ...
-│   ├── integration/
-│   │   ├── auth.test.js
-│   │   ├── todo.test.js
-│   │   └── ...
-│   └── fixtures/                 # 테스트 데이터
-│       └── ...
+│   ├── routes/                  # 라우트 통합 테스트 (supertest + mock)
+│   │   ├── auth.routes.test.js
+│   │   ├── category.routes.test.js
+│   │   └── todo.routes.test.js
+│   ├── services/                # 서비스 단위 테스트 (mock repository)
+│   │   ├── auth.service.test.js
+│   │   ├── category.service.test.js
+│   │   └── todo.service.test.js
+│   └── integration/             # 실제 DB 연결 통합 테스트
+│       └── scenarios.test.js    # US-01~06 시나리오 기반
 │
+├── swagger.json                  # OpenAPI 3.0 스펙 (Swagger UI 제공: /api-docs)
 ├── .env.example                  # 환경변수 예제
 ├── package.json
 ├── .eslintrc.js
-├── .prettierrc
-└── ...
+└── .prettierrc
+
+# 데이터베이스 관련 파일 (프로젝트 루트)
+database/
+├── schema.sql                    # 전체 DB 스키마 (DDL)
+└── seeds/
+    └── seed.js                   # 개발·테스트용 시드 데이터
 ```
 
 ### 7.1 백엔드 디렉토리 상세 설명
@@ -674,10 +650,9 @@ backend/
 - 데이터베이스 전용 로직
 
 **middleware/**
-- JWT 토큰 검증
-- 에러 처리
-- 입력값 검증
-- CORS, 로깅 등 공통 처리
+- JWT 토큰 검증 (auth.middleware.js)
+- 에러 처리 (errorHandler.middleware.js)
+- 입력값 검증은 각 컨트롤러에서 직접 처리
 
 **config/**
 - 데이터베이스 연결 설정
@@ -691,14 +666,12 @@ backend/
 - 에러 코드 정의
 
 **constants/**
-- HTTP 상태 코드 상수
-- 에러 메시지
-- 비즈니스 규칙 관련 상수
+- HTTP 상태 코드 상수 (httpStatus.js)
+- 에러 코드 상수는 utils/errorCodes.js에서 관리
 
-**db/**
-- 데이터베이스 마이그레이션 스크립트
-- DB 스키마 정의
-- 테스트 데이터 시드
+**database/** (프로젝트 루트)
+- DB 스키마 정의 (schema.sql)
+- 테스트 데이터 시드 (seeds/seed.js)
 
 ---
 
