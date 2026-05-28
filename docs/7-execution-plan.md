@@ -73,14 +73,14 @@
 **설명**: PostgreSQL 17 설치·구동 확인, DB·사용자 생성, 접속 검증
 
 **의존성**
-- [ ] 없음 (시작점)
+- [x] 없음 (시작점)
 
 **완료 조건**
-- [ ] PostgreSQL 17 설치 완료, `psql --version` 확인
-- [ ] `todolist` 데이터베이스 생성 완료
-- [ ] DB 접속 계정(user/password) 생성 및 권한 부여 완료
-- [ ] `psql -U <user> -d todolist` 접속 성공 확인
-- [ ] `uuid-ossp` 확장 활성화 확인 (`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`)
+- [x] PostgreSQL 17 설치 완료, `psql --version` 확인
+- [x] `todolist` 데이터베이스 생성 완료
+- [x] DB 접속 계정(user/password) 생성 및 권한 부여 완료
+- [x] `psql -U <user> -d todolist` 접속 성공 확인
+- [x] `uuid-ossp` 확장 활성화 확인 (`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`)
 
 ---
 
@@ -89,14 +89,14 @@
 **설명**: `database/schema.sql` 실행하여 users·categories·todos 테이블 및 인덱스 생성
 
 **의존성**
-- [ ] DB-01 완료
+- [x] DB-01 완료
 
 **완료 조건**
-- [ ] `users`, `categories`, `todos` 3개 테이블 생성 확인
-- [ ] PK, UNIQUE, FK 제약조건 적용 확인
-- [ ] CHECK 제약조건 3개 적용 확인 (`chk_users_language`, `chk_users_theme_mode`, `chk_todos_end_date`)
-- [ ] 인덱스 4개 생성 확인 (`idx_categories_user_id`, `idx_todos_user_id`, `idx_todos_category_id`, `idx_todos_status`)
-- [ ] FK `fk_todos_category` ON DELETE RESTRICT 동작 확인 (카테고리 직접 삭제 시 오류 발생 검증)
+- [x] `users`, `categories`, `todos` 3개 테이블 생성 확인
+- [x] PK, UNIQUE, FK 제약조건 적용 확인
+- [x] CHECK 제약조건 3개 적용 확인 (`chk_users_language`, `chk_users_theme_mode`, `chk_todos_end_date`)
+- [x] 인덱스 4개 생성 확인 (`idx_categories_user_id`, `idx_todos_user_id`, `idx_todos_category_id`, `idx_todos_status`)
+- [x] FK `fk_todos_category` ON DELETE RESTRICT 동작 확인 (카테고리 직접 삭제 시 오류 발생 검증)
 
 ---
 
@@ -105,13 +105,13 @@
 **설명**: `database/seeds/seed.js` 작성 — 개발·테스트용 사용자, 카테고리, 할일 데이터 삽입
 
 **의존성**
-- [ ] DB-02 완료
+- [x] DB-02 완료
 
 **완료 조건**
-- [ ] 테스트 사용자 1명 이상 삽입 (이메일, bcrypt 해시 비밀번호)
-- [ ] 해당 사용자의 기본 카테고리 + 일반 카테고리 1개 이상 삽입
-- [ ] 상태별 할일 4개 이상 삽입 (시작 전·진행 중·완료·기한 초과 각 1개)
-- [ ] `node database/seeds/seed.js` 실행 시 오류 없이 완료
+- [x] 테스트 사용자 1명 이상 삽입 (이메일, bcrypt 해시 비밀번호)
+- [x] 해당 사용자의 기본 카테고리 + 일반 카테고리 1개 이상 삽입
+- [x] 상태별 할일 4개 이상 삽입 (시작 전·진행 중·완료·기한 초과 각 1개)
+- [x] `node database/seeds/seed.js` 실행 시 오류 없이 완료
 
 ---
 
@@ -667,9 +667,9 @@
 ## Task 완료 체크리스트 요약
 
 ### Database
-- [ ] DB-01: 개발 환경 구성
-- [ ] DB-02: 스키마 생성 (DDL 실행)
-- [ ] DB-03: 테스트 시드 데이터 작성
+- [x] DB-01: 개발 환경 구성
+- [x] DB-02: 스키마 생성 (DDL 실행)
+- [x] DB-03: 테스트 시드 데이터 작성
 
 ### Backend
 - [ ] BE-01: 프로젝트 초기화
