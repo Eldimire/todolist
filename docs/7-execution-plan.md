@@ -199,34 +199,34 @@
 **설명**: User·Category·Todo Repository 구현 (pg 파라미터 바인딩 사용)
 
 **의존성**
-- [ ] BE-02 완료
+- [x] BE-02 완료
 
 **완료 조건**
 
 **user.repository.js**
-- [ ] `findByEmail(email)` — 이메일로 사용자 조회
-- [ ] `findById(id)` — ID로 사용자 조회
-- [ ] `create({ email, password, name })` — 사용자 생성, 생성된 row 반환
-- [ ] `update(id, { name?, password? })` — 사용자 정보 수정
+- [x] `findByEmail(email)` — 이메일로 사용자 조회
+- [x] `findById(id)` — ID로 사용자 조회
+- [x] `create({ email, password, name })` — 사용자 생성, 생성된 row 반환
+- [x] `update(id, { name?, password? })` — 사용자 정보 수정
 
 **category.repository.js**
-- [ ] `create({ userId, name, isDefault })` — 카테고리 생성
-- [ ] `findById(id)` — ID로 카테고리 조회
-- [ ] `findByUserId(userId)` — 사용자별 카테고리 목록 조회
-- [ ] `findDefaultByUserId(userId)` — 사용자의 기본 카테고리 조회
-- [ ] `update(id, { name })` — 카테고리명 수정
-- [ ] `delete(id)` — 카테고리 삭제
+- [x] `create({ userId, name, isDefault })` — 카테고리 생성
+- [x] `findById(id)` — ID로 카테고리 조회
+- [x] `findByUserId(userId)` — 사용자별 카테고리 목록 조회
+- [x] `findDefaultByUserId(userId)` — 사용자의 기본 카테고리 조회
+- [x] `update(id, { name })` — 카테고리명 수정
+- [x] `delete(id)` — 카테고리 삭제
 
 **todo.repository.js**
-- [ ] `create({ userId, categoryId, title, description, startDate, endDate })` — 할일 생성
-- [ ] `findById(id)` — ID로 할일 조회
-- [ ] `findByUserId(userId)` — 전체 할일 목록 조회
-- [ ] `findByUserIdAndCategory(userId, categoryId)` — 카테고리별 조회
-- [ ] `findByUserIdAndStatus(userId, status)` — 상태별 조회 (시작 전·진행 중·완료·기한 초과)
-- [ ] `update(id, fields)` — 할일 수정
-- [ ] `updateCategory(todoId, categoryId)` — 카테고리 재지정 (카테고리 삭제 시 사용)
-- [ ] `delete(id)` — 할일 삭제
-- [ ] 모든 쿼리에 pg 파라미터 바인딩(`$1`, `$2`) 사용 확인 (동적 문자열 연결 없음)
+- [x] `create({ userId, categoryId, title, description, startDate, endDate })` — 할일 생성
+- [x] `findById(id)` — ID로 할일 조회
+- [x] `findByUserId(userId)` — 전체 할일 목록 조회
+- [x] `findByUserIdAndCategory(userId, categoryId)` — 카테고리별 조회
+- [x] `findByUserIdAndStatus(userId, status)` — 상태별 조회 (시작 전·진행 중·완료·기한 초과)
+- [x] `update(id, fields)` — 할일 수정
+- [x] `updateCategory(todoId, categoryId)` — 카테고리 재지정 (카테고리 삭제 시 사용)
+- [x] `delete(id)` — 할일 삭제
+- [x] 모든 쿼리에 pg 파라미터 바인딩(`$1`, `$2`) 사용 확인 (동적 문자열 연결 없음)
 
 ---
 
@@ -676,7 +676,7 @@
 - [x] BE-02: 환경변수 및 DB 연결 설정
 - [x] BE-03: 공통 유틸리티 구현
 - [x] BE-04: 미들웨어 구현
-- [ ] BE-05: Repository 레이어 구현
+- [x] BE-05: Repository 레이어 구현
 - [ ] BE-06: Service 레이어 구현
 - [ ] BE-07: 인증 API 구현
 - [ ] BE-08: 카테고리 API 구현
