@@ -372,18 +372,18 @@
 **설명**: `.env` 파일의 모든 필수 환경변수 설정 최종 확인
 
 **의존성**
-- [ ] BE-02 완료
+- [x] BE-02 완료
 
 **완료 조건**
-- [ ] 아래 모든 환경변수 설정 확인
-  - [ ] `NODE_ENV`
-  - [ ] `PORT`
-  - [ ] `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`
-  - [ ] `JWT_SECRET` (최소 32자 이상)
-  - [ ] `JWT_EXPIRY` (예: `7d`)
-  - [ ] `CORS_ORIGIN`
-- [ ] `.env` 파일이 `.gitignore`에 포함되어 있음 확인
-- [ ] `.env.example` 파일에 실제 값 없이 키만 명시 확인
+- [x] 아래 모든 환경변수 설정 확인
+  - [x] `NODE_ENV`
+  - [x] `PORT`
+  - [x] `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`
+  - [x] `JWT_SECRET` (최소 32자 이상)
+  - [x] `JWT_EXPIRY` (예: `7d`)
+  - [x] `CORS_ORIGIN`
+- [x] `.env` 파일이 `.gitignore`에 포함되어 있음 확인
+- [x] `.env.example` 파일에 실제 값 없이 키만 명시 확인
 
 ---
 
@@ -683,7 +683,7 @@
 - [x] BE-09: 할일 API 구현
 - [x] BE-10: Express 앱 통합
 - [x] BE-11: 백엔드 통합 검증
-- [ ] BE-12: 백엔드 .env 설정 완성
+- [x] BE-12: 백엔드 .env 설정 완성
 - [ ] BE-13: v2 설정 API 구현 *(v2)*
 
 ### Frontend
