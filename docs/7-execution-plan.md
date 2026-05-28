@@ -265,19 +265,19 @@
 **설명**: UC-001~004 엔드포인트 구현 및 라우팅 연결
 
 **의존성**
-- [ ] BE-06 완료
+- [x] BE-06 완료
 
 **완료 조건**
-- [ ] `POST /api/auth/signup` — 회원가입 (201 반환)
-  - [ ] 이메일 RFC 5321 형식 검증 (400)
-  - [ ] 비밀번호 8자 미만 → 400
-  - [ ] 이메일 중복 → 409
-- [ ] `POST /api/auth/login` — 로그인 (200, JWT + user 정보 반환)
-  - [ ] 이메일/비밀번호 불일치 → 401
-  - [ ] 응답에 `language`, `themeMode` 포함 확인
-- [ ] `POST /api/auth/logout` — 로그아웃 (200, 인증 필요)
-- [ ] `PATCH /api/users/me` — 내 정보 수정 (200, 인증 필요)
-  - [ ] 비밀번호 8자 미만 → 400
+- [x] `POST /api/auth/signup` — 회원가입 (201 반환)
+  - [x] 이메일 RFC 5321 형식 검증 (400)
+  - [x] 비밀번호 8자 미만 → 400
+  - [x] 이메일 중복 → 409
+- [x] `POST /api/auth/login` — 로그인 (200, JWT + user 정보 반환)
+  - [x] 이메일/비밀번호 불일치 → 401
+  - [x] 응답에 `language`, `themeMode` 포함 확인
+- [x] `POST /api/auth/logout` — 로그아웃 (200, 인증 필요)
+- [x] `PATCH /api/users/me` — 내 정보 수정 (200, 인증 필요)
+  - [x] 비밀번호 8자 미만 → 400
 
 ---
 
@@ -678,7 +678,7 @@
 - [x] BE-04: 미들웨어 구현
 - [x] BE-05: Repository 레이어 구현
 - [x] BE-06: Service 레이어 구현
-- [ ] BE-07: 인증 API 구현
+- [x] BE-07: 인증 API 구현
 - [ ] BE-08: 카테고리 API 구현
 - [ ] BE-09: 할일 API 구현
 - [ ] BE-10: Express 앱 통합
