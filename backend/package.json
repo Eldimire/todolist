@@ -24,6 +24,7 @@
   },
   "jest": {
     "testEnvironment": "node",
+    "forceExit": true,
     "coverageThreshold": {
       "global": {
         "lines": 80
