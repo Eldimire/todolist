@@ -5,6 +5,7 @@ const cors = require('cors');
 const authRouter = require('./route/auth.route');
 const userRouter = require('./route/user.route');
 const categoryRouter = require('./route/category.route');
+const todoRouter = require('./route/todo.route');
 const handleError = require('./middleware/errorHandler.middleware');
 
 const app = express();
@@ -21,6 +22,7 @@ app.get('/', (_req, res) => {
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/categories', categoryRouter);
+app.use('/api/todos', todoRouter);
 
 // 404 핸들러
 app.use((_req, res) => {

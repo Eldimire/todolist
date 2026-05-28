@@ -307,26 +307,26 @@
 **설명**: UC-008~017 엔드포인트 구현 및 라우팅 연결
 
 **의존성**
-- [ ] BE-06 완료
+- [x] BE-06 완료
 
 **완료 조건**
-- [ ] `POST /api/todos` — 할일 등록 (201, 인증 필요)
-  - [ ] 제목 200자 초과 → 400
-  - [ ] 설명 2000자 초과 → 400
-  - [ ] 종료일 < 시작일 → 422
-  - [ ] 카테고리 미지정 시 기본 카테고리 자동 적용 확인
-- [ ] `PATCH /api/todos/:id` — 할일 수정 (200, 인증 필요)
-  - [ ] 종료일 < 시작일 → 422
-  - [ ] 타 사용자 할일 접근 → 403
-- [ ] `DELETE /api/todos/:id` — 할일 삭제 (200, 인증 필요)
-  - [ ] 타 사용자 할일 접근 → 403
-- [ ] `PATCH /api/todos/:id/complete` — 완료 처리 토글 (200, 인증 필요)
-- [ ] `GET /api/todos` — 전체 할일 조회 (200, 인증 필요)
-- [ ] `GET /api/todos?categoryId=:id` — 카테고리별 조회 (200)
-- [ ] `GET /api/todos?status=not-started` — 시작 전 조회 (KST 기준)
-- [ ] `GET /api/todos?status=in-progress` — 진행 중 조회 (KST 기준)
-- [ ] `GET /api/todos?status=completed` — 완료 조회
-- [ ] `GET /api/todos?status=overdue` — 기한 초과 조회 (KST 기준)
+- [x] `POST /api/todos` — 할일 등록 (201, 인증 필요)
+  - [x] 제목 200자 초과 → 400
+  - [x] 설명 2000자 초과 → 400
+  - [x] 종료일 < 시작일 → 422
+  - [x] 카테고리 미지정 시 기본 카테고리 자동 적용 확인
+- [x] `PATCH /api/todos/:id` — 할일 수정 (200, 인증 필요)
+  - [x] 종료일 < 시작일 → 422
+  - [x] 타 사용자 할일 접근 → 403
+- [x] `DELETE /api/todos/:id` — 할일 삭제 (200, 인증 필요)
+  - [x] 타 사용자 할일 접근 → 403
+- [x] `PATCH /api/todos/:id/complete` — 완료 처리 토글 (200, 인증 필요)
+- [x] `GET /api/todos` — 전체 할일 조회 (200, 인증 필요)
+- [x] `GET /api/todos?categoryId=:id` — 카테고리별 조회 (200)
+- [x] `GET /api/todos?status=not-started` — 시작 전 조회 (KST 기준)
+- [x] `GET /api/todos?status=in-progress` — 진행 중 조회 (KST 기준)
+- [x] `GET /api/todos?status=completed` — 완료 조회
+- [x] `GET /api/todos?status=overdue` — 기한 초과 조회 (KST 기준)
 
 ---
 
@@ -680,7 +680,7 @@
 - [x] BE-06: Service 레이어 구현
 - [x] BE-07: 인증 API 구현
 - [x] BE-08: 카테고리 API 구현
-- [ ] BE-09: 할일 API 구현
+- [x] BE-09: 할일 API 구현
 - [ ] BE-10: Express 앱 통합
 - [ ] BE-11: 백엔드 통합 검증
 - [ ] BE-12: 백엔드 .env 설정 완성
