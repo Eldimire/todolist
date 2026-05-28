@@ -18,3 +18,20 @@ describe('GET /nonexistent', () => {
     expect(res.body).toMatchObject({ code: 'NOT_FOUND' });
   });
 });
+
+describe('CORS', () => {
+  it('CORS 헤더 (Access-Control-Allow-Origin)가 응답에 포함되어야 한다', async () => {
+    const res = await request(app)
+      .get('/')
+      .set('Origin', 'http://localhost:5173');
+    expect(res.headers['access-control-allow-origin']).toBe('http://localhost:5173');
+  });
+});
+
+describe('GET /api/nonexistent', () => {
+  it('존재하지 않는 경로는 404를 반환해야 한다', async () => {
+    const res = await request(app).get('/api/nonexistent');
+    expect(res.status).toBe(404);
+    expect(res.body.code).toBe('NOT_FOUND');
+  });
+});

@@ -335,16 +335,16 @@
 **설명**: `app.js` — CORS·JSON 파싱·라우터 통합·에러 핸들러 등록, `server.js` — 서버 시작
 
 **의존성**
-- [ ] BE-07 완료
-- [ ] BE-08 완료
-- [ ] BE-09 완료
+- [x] BE-07 완료
+- [x] BE-08 완료
+- [x] BE-09 완료
 
 **완료 조건**
-- [ ] `app.js` — cors(CORS_ORIGIN), express.json(), 모든 라우터 등록, errorHandler 마지막 등록
-- [ ] `server.js` — PORT 환경변수로 서버 시작, DB 연결 성공 후 listen 확인
-- [ ] `npm run dev` 실행 후 `GET /` → 200 응답 확인
-- [ ] 존재하지 않는 경로 → 404 확인
-- [ ] CORS 헤더 (`Access-Control-Allow-Origin`) 응답 포함 확인
+- [x] `app.js` — cors(CORS_ORIGIN), express.json(), 모든 라우터 등록, errorHandler 마지막 등록
+- [x] `server.js` — PORT 환경변수로 서버 시작, DB 연결 성공 후 listen 확인
+- [x] `npm run dev` 실행 후 `GET /` → 200 응답 확인
+- [x] 존재하지 않는 경로 → 404 확인
+- [x] CORS 헤더 (`Access-Control-Allow-Origin`) 응답 포함 확인
 
 ---
 
@@ -681,7 +681,7 @@
 - [x] BE-07: 인증 API 구현
 - [x] BE-08: 카테고리 API 구현
 - [x] BE-09: 할일 API 구현
-- [ ] BE-10: Express 앱 통합
+- [x] BE-10: Express 앱 통합
 - [ ] BE-11: 백엔드 통합 검증
 - [ ] BE-12: 백엔드 .env 설정 완성
 - [ ] BE-13: v2 설정 API 구현 *(v2)*
