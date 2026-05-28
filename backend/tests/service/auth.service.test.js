@@ -137,4 +137,48 @@ describe('auth.service', () => {
       expect(userRepo.update).toHaveBeenCalledWith(1, { password: 'new_hashed_password' });
     });
   });
+
+  // ──────────────────────────────────────────────
+  // updateLanguage
+  // ──────────────────────────────────────────────
+  describe('updateLanguage', () => {
+    it('userRepo.update(userId, { language }) 를 호출한다', async () => {
+      const mockUser = { id: 1, email: 'test@example.com', name: '홍길동', language: 'en', themeMode: 'light' };
+      userRepo.update.mockResolvedValue(mockUser);
+
+      await authService.updateLanguage(1, 'en');
+
+      expect(userRepo.update).toHaveBeenCalledWith(1, { language: 'en' });
+    });
+
+    it('업데이트된 user를 반환한다', async () => {
+      userRepo.update.mockResolvedValue({ id: 1, email: 'test@example.com', name: '홍길동', language: 'ja', theme_mode: 'light' });
+
+      const result = await authService.updateLanguage(1, 'ja');
+
+      expect(result).toEqual({ id: 1, email: 'test@example.com', name: '홍길동', language: 'ja', themeMode: 'light' });
+    });
+  });
+
+  // ──────────────────────────────────────────────
+  // updateTheme
+  // ──────────────────────────────────────────────
+  describe('updateTheme', () => {
+    it('userRepo.update(userId, { themeMode }) 를 호출한다', async () => {
+      const mockUser = { id: 1, email: 'test@example.com', name: '홍길동', language: 'ko', themeMode: 'dark' };
+      userRepo.update.mockResolvedValue(mockUser);
+
+      await authService.updateTheme(1, 'dark');
+
+      expect(userRepo.update).toHaveBeenCalledWith(1, { themeMode: 'dark' });
+    });
+
+    it('업데이트된 user를 반환한다', async () => {
+      userRepo.update.mockResolvedValue({ id: 1, email: 'test@example.com', name: '홍길동', language: 'ko', theme_mode: 'dark' });
+
+      const result = await authService.updateTheme(1, 'dark');
+
+      expect(result).toEqual({ id: 1, email: 'test@example.com', name: '홍길동', language: 'ko', themeMode: 'dark' });
+    });
+  });
 });

@@ -179,3 +179,89 @@ describe('PATCH /api/users/me', () => {
     expect(res.body).toMatchObject({ code: 'VALIDATION_ERROR' });
   });
 });
+
+// ──────────────────────────────────────────────
+// PATCH /api/users/me/language
+// ──────────────────────────────────────────────
+describe('PATCH /api/users/me/language', () => {
+  const endpoint = '/api/users/me/language';
+
+  it('15. 유효한 언어 코드(ko) → 200, { user }', async () => {
+    authService.updateLanguage.mockResolvedValue({
+      id: 'user-id-1',
+      email: 'test@example.com',
+      name: '홍길동',
+      language: 'ko',
+      themeMode: 'light',
+    });
+
+    const res = await request(app)
+      .patch(endpoint)
+      .set('Authorization', `Bearer ${VALID_TOKEN}`)
+      .send({ language: 'ko' });
+
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchObject({ user: { language: 'ko' } });
+  });
+
+  it('16. 유효하지 않은 언어 코드(xx) → 400, VALIDATION_ERROR', async () => {
+    const res = await request(app)
+      .patch(endpoint)
+      .set('Authorization', `Bearer ${VALID_TOKEN}`)
+      .send({ language: 'xx' });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toMatchObject({ code: 'VALIDATION_ERROR' });
+  });
+
+  it('17. 토큰 없음 → 401', async () => {
+    const res = await request(app)
+      .patch(endpoint)
+      .send({ language: 'ko' });
+
+    expect(res.status).toBe(401);
+  });
+});
+
+// ──────────────────────────────────────────────
+// PATCH /api/users/me/theme
+// ──────────────────────────────────────────────
+describe('PATCH /api/users/me/theme', () => {
+  const endpoint = '/api/users/me/theme';
+
+  it('18. 유효한 테마(dark) → 200, { user }', async () => {
+    authService.updateTheme.mockResolvedValue({
+      id: 'user-id-1',
+      email: 'test@example.com',
+      name: '홍길동',
+      language: 'ko',
+      themeMode: 'dark',
+    });
+
+    const res = await request(app)
+      .patch(endpoint)
+      .set('Authorization', `Bearer ${VALID_TOKEN}`)
+      .send({ themeMode: 'dark' });
+
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchObject({ user: { themeMode: 'dark' } });
+  });
+
+  it('19. 유효하지 않은 테마(blue) → 400, VALIDATION_ERROR', async () => {
+    const res = await request(app)
+      .patch(endpoint)
+      .set('Authorization', `Bearer ${VALID_TOKEN}`)
+      .send({ theme: 'blue' });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toMatchObject({ code: 'VALIDATION_ERROR' });
+  });
+
+  it('20. 토큰 없음 → 401', async () => {
+    const res = await request(app)
+      .patch(endpoint)
+      .send({ themeMode: 'dark' });
+
+    expect(res.status).toBe(401);
+  });
+});

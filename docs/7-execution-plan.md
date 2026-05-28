@@ -392,15 +392,15 @@
 **설명**: UC-018~019 언어·테마 설정 API 구현 (v2)
 
 **의존성**
-- [ ] BE-06 완료
-- [ ] BE-11 완료 (v1 완성 후 진행)
+- [x] BE-06 완료
+- [x] BE-11 완료 (v1 완성 후 진행)
 
 **완료 조건**
-- [ ] `PATCH /api/users/me/language` — 언어 설정 저장 (200, 인증 필요)
-  - [ ] 유효하지 않은 언어 코드(ko/en/ja 외) → 400
-- [ ] `PATCH /api/users/me/theme` — 테마 설정 저장 (200, 인증 필요)
-  - [ ] 유효하지 않은 테마 값(light/dark 외) → 400
-- [ ] 로그인 응답에 변경된 language·themeMode 포함 확인
+- [x] `PATCH /api/users/me/language` — 언어 설정 저장 (200, 인증 필요)
+  - [x] 유효하지 않은 언어 코드(ko/en/ja 외) → 400
+- [x] `PATCH /api/users/me/theme` — 테마 설정 저장 (200, 인증 필요)
+  - [x] 유효하지 않은 테마 값(light/dark 외) → 400
+- [x] 로그인 응답에 변경된 language·themeMode 포함 확인
 
 ---
 
@@ -684,7 +684,7 @@
 - [x] BE-10: Express 앱 통합
 - [x] BE-11: 백엔드 통합 검증
 - [x] BE-12: 백엔드 .env 설정 완성
-- [ ] BE-13: v2 설정 API 구현 *(v2)*
+- [x] BE-13: v2 설정 API 구현 *(v2)*
 
 ### Frontend
 - [ ] FE-01: 프로젝트 초기화

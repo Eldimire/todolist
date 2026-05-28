@@ -56,4 +56,14 @@ async function updateProfile(userId, { name, password }) {
   return { id: updated.id, email: updated.email, name: updated.name };
 }
 
-module.exports = { signup, login, updateProfile };
+async function updateLanguage(userId, language) {
+  const updated = await userRepo.update(userId, { language });
+  return { id: updated.id, email: updated.email, name: updated.name, language: updated.language, themeMode: updated.theme_mode };
+}
+
+async function updateTheme(userId, themeMode) {
+  const updated = await userRepo.update(userId, { themeMode });
+  return { id: updated.id, email: updated.email, name: updated.name, language: updated.language, themeMode: updated.theme_mode };
+}
+
+module.exports = { signup, login, updateProfile, updateLanguage, updateTheme };

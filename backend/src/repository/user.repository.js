@@ -39,6 +39,14 @@ async function update(id, fields) {
     setClauses.push(`password = $${idx++}`);
     values.push(fields.password);
   }
+  if (fields.language !== undefined) {
+    setClauses.push(`language = $${idx++}`);
+    values.push(fields.language);
+  }
+  if (fields.themeMode !== undefined) {
+    setClauses.push(`theme_mode = $${idx++}`);
+    values.push(fields.themeMode);
+  }
 
   if (setClauses.length === 0) return findById(id);
 

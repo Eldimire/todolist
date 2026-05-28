@@ -126,3 +126,31 @@ describe('userRepository.update', () => {
     expect(result).toEqual(mockUser);
   });
 });
+
+describe('userRepository.update - language/themeMode', () => {
+  it('language 업데이트 → language = $1로 SET절 포함 UPDATE 쿼리를 호출한다', async () => {
+    const mockUser = { id: 1, language: 'en' };
+    db.query.mockResolvedValue({ rows: [mockUser] });
+
+    const result = await userRepo.update(1, { language: 'en' });
+
+    expect(db.query).toHaveBeenCalledWith(
+      'UPDATE users SET language = $1, updated_at = NOW() WHERE id = $2 RETURNING *',
+      ['en', 1]
+    );
+    expect(result).toEqual(mockUser);
+  });
+
+  it('themeMode 업데이트 → theme_mode = $1로 SET절 포함 UPDATE 쿼리를 호출한다', async () => {
+    const mockUser = { id: 1, theme_mode: 'dark' };
+    db.query.mockResolvedValue({ rows: [mockUser] });
+
+    const result = await userRepo.update(1, { themeMode: 'dark' });
+
+    expect(db.query).toHaveBeenCalledWith(
+      'UPDATE users SET theme_mode = $1, updated_at = NOW() WHERE id = $2 RETURNING *',
+      ['dark', 1]
+    );
+    expect(result).toEqual(mockUser);
+  });
+});

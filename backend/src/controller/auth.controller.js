@@ -68,4 +68,34 @@ async function updateProfile(req, res, next) {
   }
 }
 
-module.exports = { signup, login, logout, updateProfile };
+async function updateLanguage(req, res, next) {
+  try {
+    const userId = req.user.id;
+    const { language } = req.body;
+    const VALID_LANGUAGES = ['ko', 'en', 'ja'];
+    if (!language || !VALID_LANGUAGES.includes(language)) {
+      throw new AppError(httpStatus.BAD_REQUEST, errorCodes.VALIDATION_ERROR, '유효한 언어 코드(ko/en/ja)를 입력해주세요.');
+    }
+    const result = await authService.updateLanguage(userId, language);
+    return res.status(httpStatus.OK).json({ user: result });
+  } catch (err) {
+    return next(err);
+  }
+}
+
+async function updateTheme(req, res, next) {
+  try {
+    const userId = req.user.id;
+    const { themeMode } = req.body;
+    const VALID_THEMES = ['light', 'dark'];
+    if (!themeMode || !VALID_THEMES.includes(themeMode)) {
+      throw new AppError(httpStatus.BAD_REQUEST, errorCodes.VALIDATION_ERROR, '유효한 테마(light/dark)를 입력해주세요.');
+    }
+    const result = await authService.updateTheme(userId, themeMode);
+    return res.status(httpStatus.OK).json({ user: result });
+  } catch (err) {
+    return next(err);
+  }
+}
+
+module.exports = { signup, login, logout, updateProfile, updateLanguage, updateTheme };
