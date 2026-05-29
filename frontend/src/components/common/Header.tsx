@@ -10,8 +10,14 @@ export function Header() {
 
   return (
     <header className="h-14 bg-bg-base border-b border-[#A3BDD8] flex items-center justify-between px-4 md:px-8">
-      <Link to="/" className="text-lg font-bold text-text-primary">
-        TodoList
+      <Link to="/" className="flex items-center">
+        <img src="/squirtle.png" alt="" className="h-10 w-auto relative z-0" />
+        <span
+          className="relative z-10 font-bold text-text-primary whitespace-nowrap"
+          style={{ marginLeft: '-8px', fontSize: '27px', lineHeight: 1 }}
+        >
+          TodoList
+        </span>
       </Link>
 
       {/* 태블릿/데스크톱 네비게이션 */}
