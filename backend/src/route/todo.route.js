@@ -9,6 +9,7 @@ const router = Router();
 router.use(authMiddleware);
 
 router.get('/', todoController.getTodos);
+router.get('/:id', todoController.getTodoById);
 router.post('/', todoController.createTodo);
 router.patch('/:id/complete', todoController.toggleComplete);
 router.patch('/:id', todoController.updateTodo);

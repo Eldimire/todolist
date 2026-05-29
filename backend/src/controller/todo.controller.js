@@ -5,6 +5,17 @@ const AppError = require('../utils/AppError');
 const errorCodes = require('../utils/errorCodes');
 const httpStatus = require('../constants/httpStatus');
 
+async function getTodoById(req, res, next) {
+  try {
+    const userId = req.user.id;
+    const todoId = req.params.id;
+    const result = await todoService.getTodo(userId, todoId);
+    return res.status(httpStatus.OK).json({ todo: result });
+  } catch (err) {
+    return next(err);
+  }
+}
+
 async function getTodos(req, res, next) {
   try {
     const userId = req.user.id;
@@ -99,4 +110,4 @@ async function toggleComplete(req, res, next) {
   }
 }
 
-module.exports = { getTodos, createTodo, updateTodo, deleteTodo, toggleComplete };
+module.exports = { getTodoById, getTodos, createTodo, updateTodo, deleteTodo, toggleComplete };

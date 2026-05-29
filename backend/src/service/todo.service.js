@@ -12,6 +12,17 @@ function validateDateRange(startDate, endDate) {
   }
 }
 
+async function getTodo(userId, todoId) {
+  const todo = await todoRepo.findById(todoId);
+  if (!todo) {
+    throw new AppError(httpStatus.NOT_FOUND, errorCodes.TODO_NOT_FOUND, '할일을 찾을 수 없습니다.');
+  }
+  if (todo.user_id !== userId) {
+    throw new AppError(httpStatus.FORBIDDEN, errorCodes.FORBIDDEN, '접근 권한이 없습니다.');
+  }
+  return todo;
+}
+
 async function getTodos(userId, { categoryId, status } = {}) {
   if (categoryId) return todoRepo.findByUserIdAndCategory(userId, categoryId);
   if (status) return todoRepo.findByUserIdAndStatus(userId, status);
@@ -70,4 +81,4 @@ async function toggleComplete(userId, todoId) {
   return todoRepo.update(todoId, { isCompleted: !todo.is_completed });
 }
 
-module.exports = { getTodos, createTodo, updateTodo, deleteTodo, toggleComplete };
+module.exports = { getTodo, getTodos, createTodo, updateTodo, deleteTodo, toggleComplete };
