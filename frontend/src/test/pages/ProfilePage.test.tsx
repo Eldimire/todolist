@@ -28,10 +28,10 @@ const mockLogout = { mutate: vi.fn(), isPending: false }
 
 function setupMocks() {
   vi.mocked(useAuthModule.useUpdateProfile).mockReturnValue(
-    mockUpdate as ReturnType<typeof useAuthModule.useUpdateProfile>
+    mockUpdate as unknown as ReturnType<typeof useAuthModule.useUpdateProfile>
   )
   vi.mocked(useAuthModule.useLogout).mockReturnValue(
-    mockLogout as ReturnType<typeof useAuthModule.useLogout>
+    mockLogout as unknown as ReturnType<typeof useAuthModule.useLogout>
   )
 }
 
@@ -137,7 +137,7 @@ describe('ProfilePage', () => {
       vi.mocked(useAuthModule.useUpdateProfile).mockReturnValue({
         mutate: vi.fn().mockImplementation((_, callbacks) => callbacks?.onSuccess?.()),
         isPending: false,
-      } as ReturnType<typeof useAuthModule.useUpdateProfile>)
+      } as unknown as ReturnType<typeof useAuthModule.useUpdateProfile>)
 
       render(<ProfilePage />)
       fireEvent.click(screen.getByRole('button', { name: '저장하기' }))
@@ -152,7 +152,7 @@ describe('ProfilePage', () => {
           })
         ),
         isPending: false,
-      } as ReturnType<typeof useAuthModule.useUpdateProfile>)
+      } as unknown as ReturnType<typeof useAuthModule.useUpdateProfile>)
 
       render(<ProfilePage />)
       fireEvent.click(screen.getByRole('button', { name: '저장하기' }))

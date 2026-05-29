@@ -22,7 +22,9 @@ describe('LoginForm', () => {
     vi.mocked(useAuthModule.useLogin).mockReturnValue({
       mutate: mockMutate,
       isPending: false,
-    } as ReturnType<typeof useAuthModule.useLogin>)
+      isError: false,
+      error: null,
+    } as unknown as ReturnType<typeof useAuthModule.useLogin>)
   })
 
   describe('렌더링', () => {
@@ -73,28 +75,20 @@ describe('LoginForm', () => {
       fireEvent.change(screen.getByLabelText('이메일'), { target: { value: 'test@test.com' } })
       fireEvent.change(screen.getByLabelText('비밀번호'), { target: { value: 'password123' } })
       fireEvent.click(screen.getByRole('button', { name: '로그인' }))
-      expect(mockMutate).toHaveBeenCalledWith(
-        { email: 'test@test.com', password: 'password123' },
-        expect.objectContaining({ onError: expect.any(Function) })
-      )
+      expect(mockMutate).toHaveBeenCalledWith({ email: 'test@test.com', password: 'password123' })
     })
   })
 
   describe('API 에러 처리', () => {
     it('INVALID_CREDENTIALS 에러 시 폼 레벨 에러 메시지를 표시한다', () => {
       vi.mocked(useAuthModule.useLogin).mockReturnValue({
-        mutate: vi.fn().mockImplementation((_, callbacks) => {
-          callbacks?.onError?.({
-            response: { data: { code: 'INVALID_CREDENTIALS', message: '...' } },
-          })
-        }),
+        mutate: vi.fn(),
         isPending: false,
-      } as ReturnType<typeof useAuthModule.useLogin>)
+        isError: true,
+        error: { response: { data: { code: 'INVALID_CREDENTIALS', message: '...' } } },
+      } as unknown as ReturnType<typeof useAuthModule.useLogin>)
 
       renderLoginForm()
-      fireEvent.change(screen.getByLabelText('이메일'), { target: { value: 'test@test.com' } })
-      fireEvent.change(screen.getByLabelText('비밀번호'), { target: { value: 'password123' } })
-      fireEvent.click(screen.getByRole('button', { name: '로그인' }))
       expect(
         screen.getByText('이메일 또는 비밀번호가 올바르지 않습니다.')
       ).toBeInTheDocument()
@@ -102,18 +96,13 @@ describe('LoginForm', () => {
 
     it('서버 오류 시 기본 에러 메시지를 표시한다', () => {
       vi.mocked(useAuthModule.useLogin).mockReturnValue({
-        mutate: vi.fn().mockImplementation((_, callbacks) => {
-          callbacks?.onError?.({
-            response: { data: { code: 'INTERNAL_SERVER_ERROR', message: '...' } },
-          })
-        }),
+        mutate: vi.fn(),
         isPending: false,
-      } as ReturnType<typeof useAuthModule.useLogin>)
+        isError: true,
+        error: { response: { data: { code: 'INTERNAL_SERVER_ERROR', message: '...' } } },
+      } as unknown as ReturnType<typeof useAuthModule.useLogin>)
 
       renderLoginForm()
-      fireEvent.change(screen.getByLabelText('이메일'), { target: { value: 'test@test.com' } })
-      fireEvent.change(screen.getByLabelText('비밀번호'), { target: { value: 'password123' } })
-      fireEvent.click(screen.getByRole('button', { name: '로그인' }))
       expect(
         screen.getByText('서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.')
       ).toBeInTheDocument()
@@ -125,7 +114,9 @@ describe('LoginForm', () => {
       vi.mocked(useAuthModule.useLogin).mockReturnValue({
         mutate: mockMutate,
         isPending: true,
-      } as ReturnType<typeof useAuthModule.useLogin>)
+        isError: false,
+        error: null,
+      } as unknown as ReturnType<typeof useAuthModule.useLogin>)
 
       renderLoginForm()
       const button = screen.getByRole('button', { name: '로그인 중...' })

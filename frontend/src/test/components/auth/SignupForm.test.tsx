@@ -22,7 +22,7 @@ describe('SignupForm', () => {
     vi.mocked(useAuthModule.useSignup).mockReturnValue({
       mutate: mockMutate,
       isPending: false,
-    } as ReturnType<typeof useAuthModule.useSignup>)
+    } as unknown as ReturnType<typeof useAuthModule.useSignup>)
   })
 
   describe('렌더링', () => {
@@ -110,7 +110,7 @@ describe('SignupForm', () => {
           })
         }),
         isPending: false,
-      } as ReturnType<typeof useAuthModule.useSignup>)
+      } as unknown as ReturnType<typeof useAuthModule.useSignup>)
 
       renderSignupForm()
       fireEvent.change(screen.getByLabelText('이름'), { target: { value: '홍길동' } })
@@ -129,7 +129,7 @@ describe('SignupForm', () => {
           })
         }),
         isPending: false,
-      } as ReturnType<typeof useAuthModule.useSignup>)
+      } as unknown as ReturnType<typeof useAuthModule.useSignup>)
 
       renderSignupForm()
       fireEvent.change(screen.getByLabelText('이름'), { target: { value: '홍길동' } })
@@ -146,7 +146,7 @@ describe('SignupForm', () => {
       vi.mocked(useAuthModule.useSignup).mockReturnValue({
         mutate: mockMutate,
         isPending: true,
-      } as ReturnType<typeof useAuthModule.useSignup>)
+      } as unknown as ReturnType<typeof useAuthModule.useSignup>)
 
       renderSignupForm()
       const button = screen.getByRole('button', { name: '가입 중...' })

@@ -22,7 +22,7 @@ const baseTodo = {
 
 function setupMocks() {
   vi.mocked(useTodoMutationModule.useToggleComplete).mockReturnValue(
-    mockToggleMutation as ReturnType<typeof useTodoMutationModule.useToggleComplete>
+    mockToggleMutation as unknown as ReturnType<typeof useTodoMutationModule.useToggleComplete>
   )
 }
 
@@ -136,7 +136,7 @@ describe('TodoCard', () => {
 
     it('isPending 중에는 체크박스가 비활성화된다', () => {
       vi.mocked(useTodoMutationModule.useToggleComplete).mockReturnValue(
-        { mutate: vi.fn(), isPending: true } as ReturnType<typeof useTodoMutationModule.useToggleComplete>
+        { mutate: vi.fn(), isPending: true } as unknown as ReturnType<typeof useTodoMutationModule.useToggleComplete>
       )
       render(<TodoCard todo={baseTodo} onEdit={onEdit} onDelete={onDelete} />)
       expect(screen.getByRole('checkbox')).toBeDisabled()

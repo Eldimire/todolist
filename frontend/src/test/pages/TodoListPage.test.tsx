@@ -76,15 +76,15 @@ function setupMocks(todosOverride = mockTodos, isLoading = false) {
   vi.mocked(useTodoListModule.useTodos).mockReturnValue({
     data: todosOverride,
     isLoading,
-  } as ReturnType<typeof useTodoListModule.useTodos>)
+  } as unknown as ReturnType<typeof useTodoListModule.useTodos>)
 
   vi.mocked(useCategoryModule.useCategories).mockReturnValue({
     data: mockCategories,
     isLoading: false,
-  } as ReturnType<typeof useCategoryModule.useCategories>)
+  } as unknown as ReturnType<typeof useCategoryModule.useCategories>)
 
   vi.mocked(useTodoMutationModule.useDeleteTodo).mockReturnValue(
-    mockDelete as ReturnType<typeof useTodoMutationModule.useDeleteTodo>
+    mockDelete as unknown as ReturnType<typeof useTodoMutationModule.useDeleteTodo>
   )
 }
 

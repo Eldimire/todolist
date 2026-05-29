@@ -53,16 +53,16 @@ function setupCreateMode() {
   vi.mocked(useTodoListModule.useTodo).mockReturnValue({
     data: undefined,
     isLoading: false,
-  } as ReturnType<typeof useTodoListModule.useTodo>)
+  } as unknown as ReturnType<typeof useTodoListModule.useTodo>)
   vi.mocked(useCategoryModule.useCategories).mockReturnValue({
     data: mockCategories,
     isLoading: false,
-  } as ReturnType<typeof useCategoryModule.useCategories>)
+  } as unknown as ReturnType<typeof useCategoryModule.useCategories>)
   vi.mocked(useTodoMutationModule.useCreateTodo).mockReturnValue(
-    mockCreate as ReturnType<typeof useTodoMutationModule.useCreateTodo>
+    mockCreate as unknown as ReturnType<typeof useTodoMutationModule.useCreateTodo>
   )
   vi.mocked(useTodoMutationModule.useUpdateTodo).mockReturnValue(
-    mockUpdate as ReturnType<typeof useTodoMutationModule.useUpdateTodo>
+    mockUpdate as unknown as ReturnType<typeof useTodoMutationModule.useUpdateTodo>
   )
 }
 
@@ -71,16 +71,16 @@ function setupEditMode() {
   vi.mocked(useTodoListModule.useTodo).mockReturnValue({
     data: mockTodo,
     isLoading: false,
-  } as ReturnType<typeof useTodoListModule.useTodo>)
+  } as unknown as ReturnType<typeof useTodoListModule.useTodo>)
   vi.mocked(useCategoryModule.useCategories).mockReturnValue({
     data: mockCategories,
     isLoading: false,
-  } as ReturnType<typeof useCategoryModule.useCategories>)
+  } as unknown as ReturnType<typeof useCategoryModule.useCategories>)
   vi.mocked(useTodoMutationModule.useCreateTodo).mockReturnValue(
-    mockCreate as ReturnType<typeof useTodoMutationModule.useCreateTodo>
+    mockCreate as unknown as ReturnType<typeof useTodoMutationModule.useCreateTodo>
   )
   vi.mocked(useTodoMutationModule.useUpdateTodo).mockReturnValue(
-    mockUpdate as ReturnType<typeof useTodoMutationModule.useUpdateTodo>
+    mockUpdate as unknown as ReturnType<typeof useTodoMutationModule.useUpdateTodo>
   )
 }
 
@@ -171,7 +171,7 @@ describe('TodoFormPage', () => {
       vi.mocked(useTodoMutationModule.useCreateTodo).mockReturnValue({
         mutate: vi.fn().mockImplementation((_, callbacks) => callbacks?.onSuccess?.()),
         isPending: false,
-      } as ReturnType<typeof useTodoMutationModule.useCreateTodo>)
+      } as unknown as ReturnType<typeof useTodoMutationModule.useCreateTodo>)
 
       render(<TodoFormPage />)
       fireEvent.change(screen.getByLabelText('제목'), { target: { value: '새 할일' } })
@@ -189,7 +189,7 @@ describe('TodoFormPage', () => {
           })
         ),
         isPending: false,
-      } as ReturnType<typeof useTodoMutationModule.useCreateTodo>)
+      } as unknown as ReturnType<typeof useTodoMutationModule.useCreateTodo>)
 
       render(<TodoFormPage />)
       fireEvent.change(screen.getByLabelText('제목'), { target: { value: '새 할일' } })
@@ -241,7 +241,7 @@ describe('TodoFormPage', () => {
       vi.mocked(useTodoMutationModule.useUpdateTodo).mockReturnValue({
         mutate: vi.fn().mockImplementation((_, callbacks) => callbacks?.onSuccess?.()),
         isPending: false,
-      } as ReturnType<typeof useTodoMutationModule.useUpdateTodo>)
+      } as unknown as ReturnType<typeof useTodoMutationModule.useUpdateTodo>)
 
       render(<TodoFormPage />)
       await waitFor(() => {

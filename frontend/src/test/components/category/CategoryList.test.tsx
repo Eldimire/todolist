@@ -18,12 +18,12 @@ function setupMocks(overrides?: Partial<typeof mockCategories[0]>[]) {
   vi.mocked(useCategoryModule.useCategories).mockReturnValue({
     data: overrides ?? mockCategories,
     isLoading: false,
-  } as ReturnType<typeof useCategoryModule.useCategories>)
+  } as unknown as ReturnType<typeof useCategoryModule.useCategories>)
   vi.mocked(useCategoryModule.useCategoryMutation).mockReturnValue({
     create: mockCreate,
     update: mockUpdate,
     remove: mockRemove,
-  } as ReturnType<typeof useCategoryModule.useCategoryMutation>)
+  } as unknown as ReturnType<typeof useCategoryModule.useCategoryMutation>)
 }
 
 describe('CategoryList', () => {
@@ -67,7 +67,7 @@ describe('CategoryList', () => {
       vi.mocked(useCategoryModule.useCategories).mockReturnValue({
         data: undefined,
         isLoading: true,
-      } as ReturnType<typeof useCategoryModule.useCategories>)
+      } as unknown as ReturnType<typeof useCategoryModule.useCategories>)
 
       render(<CategoryList />)
       expect(screen.getByText('카테고리를 불러오는 중...')).toBeInTheDocument()
@@ -105,7 +105,7 @@ describe('CategoryList', () => {
         },
         update: mockUpdate,
         remove: mockRemove,
-      } as ReturnType<typeof useCategoryModule.useCategoryMutation>)
+      } as unknown as ReturnType<typeof useCategoryModule.useCategoryMutation>)
 
       render(<CategoryList />)
       fireEvent.change(screen.getByLabelText('새 카테고리 이름'), { target: { value: '새카테고리' } })
@@ -156,12 +156,12 @@ describe('CategoryList', () => {
           isPending: false,
         },
         remove: mockRemove,
-      } as ReturnType<typeof useCategoryModule.useCategoryMutation>)
+      } as unknown as ReturnType<typeof useCategoryModule.useCategoryMutation>)
 
       vi.mocked(useCategoryModule.useCategories).mockReturnValue({
         data: [{ id: 'cat-2', user_id: 'u1', name: '업무', is_default: false, created_at: '...' }],
         isLoading: false,
-      } as ReturnType<typeof useCategoryModule.useCategories>)
+      } as unknown as ReturnType<typeof useCategoryModule.useCategories>)
 
       render(<CategoryList />)
       fireEvent.click(screen.getByRole('button', { name: '수정' }))
@@ -208,7 +208,7 @@ describe('CategoryList', () => {
           }),
           isPending: false,
         },
-      } as ReturnType<typeof useCategoryModule.useCategoryMutation>)
+      } as unknown as ReturnType<typeof useCategoryModule.useCategoryMutation>)
 
       render(<CategoryList />)
       fireEvent.click(screen.getByRole('button', { name: '삭제' }))
