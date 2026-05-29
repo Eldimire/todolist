@@ -2,6 +2,11 @@ import apiClient from './client';
 import { ENDPOINTS } from '../constants/api';
 import type { Todo, CreateTodoRequest, UpdateTodoRequest, GetTodosParams } from '../types/todo.types';
 
+export async function getTodo(id: string): Promise<{ todo: Todo }> {
+  const response = await apiClient.get<{ todo: Todo }>(ENDPOINTS.TODOS.BY_ID(id));
+  return response.data;
+}
+
 export async function getTodos(params?: GetTodosParams): Promise<{ todos: Todo[] }> {
   const response = await apiClient.get<{ todos: Todo[] }>(ENDPOINTS.TODOS.BASE, { params });
   return response.data;
