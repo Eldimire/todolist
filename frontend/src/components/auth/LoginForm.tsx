@@ -36,17 +36,12 @@ export function LoginForm() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
-
-    loginMutation.mutate(
-      { email, password },
-      {
-        onError: (error) => {
-          const { code } = parseApiError(error);
-          setErrors({ form: getErrorMessage(code) });
-        },
-      }
-    );
+    loginMutation.mutate({ email, password });
   }
+
+  const apiErrorMsg = loginMutation.isError
+    ? getErrorMessage(parseApiError(loginMutation.error).code)
+    : null;
 
   return (
     <form onSubmit={handleSubmit} noValidate>
@@ -96,9 +91,9 @@ export function LoginForm() {
         )}
       </div>
 
-      {errors.form && (
+      {(errors.form || apiErrorMsg) && (
         <p role="alert" className="mb-4 text-sm text-red-500 text-center">
-          {errors.form}
+          {errors.form || apiErrorMsg}
         </p>
       )}
 

@@ -17,8 +17,10 @@ function getTodayKST(): string {
 function computeStatus(todo: Todo): TodoStatus {
   if (todo.is_completed) return 'completed';
   const today = getTodayKST();
-  if (today < todo.start_date) return 'not_started';
-  if (today > todo.end_date) return 'overdue';
+  const startDate = todo.start_date.split('T')[0];
+  const endDate = todo.end_date.split('T')[0];
+  if (today < startDate) return 'not_started';
+  if (today > endDate) return 'overdue';
   return 'in_progress';
 }
 
@@ -67,7 +69,7 @@ export function TodoCard({ todo, categoryName, onEdit, onDelete }: TodoCardProps
             {categoryName && (
               <span className="bg-[#F3F4F6] px-2 py-0.5 rounded-[6px]">{categoryName}</span>
             )}
-            <span>{todo.start_date} ~ {todo.end_date}</span>
+            <span>{todo.start_date.split('T')[0]} ~ {todo.end_date.split('T')[0]}</span>
           </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">

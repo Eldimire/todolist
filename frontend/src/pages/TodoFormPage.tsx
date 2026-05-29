@@ -6,6 +6,7 @@ import { useTodo } from '../hooks/useTodoList';
 import { useCreateTodo, useUpdateTodo } from '../hooks/useTodoMutation';
 import { parseApiError, getErrorMessage } from '../utils/errorHandler';
 import { isNotEmpty, isValidDateRange } from '../utils/validation';
+import { isoToDateInput } from '../utils/dateUtils';
 
 interface FormErrors {
   title?: string;
@@ -34,8 +35,8 @@ export function TodoFormPage() {
       setTitle(existingTodo.title);
       setDescription(existingTodo.description ?? '');
       setCategoryId(existingTodo.category_id);
-      setStartDate(existingTodo.start_date);
-      setEndDate(existingTodo.end_date);
+      setStartDate(isoToDateInput(existingTodo.start_date));
+      setEndDate(isoToDateInput(existingTodo.end_date));
     }
   }, [isEditMode, existingTodo]);
 

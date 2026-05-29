@@ -1,3 +1,8 @@
+export function isoToDateInput(isoStr: string): string {
+  if (!isoStr) return '';
+  return isoStr.split('T')[0];
+}
+
 export function getTodayKST(): string {
   const now = new Date();
   const kstOffset = 9 * 60;
