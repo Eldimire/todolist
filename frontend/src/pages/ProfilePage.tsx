@@ -58,13 +58,13 @@ export function ProfilePage() {
       <div className="max-w-[520px] mx-auto">
         <button
           onClick={() => navigate('/')}
-          className="mb-4 text-sm text-[#6B7280] hover:text-[#111827] transition-colors"
+          className="mb-4 text-sm text-text-secondary hover:text-text-primary transition-colors"
         >
           ← 목록으로
         </button>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[14px] p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)] mb-6">
-          <h1 className="text-lg font-bold text-[#111827] mb-6">내 정보 수정</h1>
+        <div className="bg-bg-base border border-[#A3BDD8] rounded-[14px] p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)] mb-6">
+          <h1 className="text-lg font-bold text-text-primary mb-6">내 정보 수정</h1>
 
           {errors.form && (
             <p role="alert" className="mb-4 text-sm text-red-500">
@@ -73,13 +73,13 @@ export function ProfilePage() {
           )}
 
           <div className="mb-4">
-            <p className="text-xs font-medium text-[#6B7280] mb-1">현재 이메일 (변경 불가)</p>
-            <p className="text-sm text-[#111827]">{user?.email}</p>
+            <p className="text-xs font-medium text-text-secondary mb-1">현재 이메일 (변경 불가)</p>
+            <p className="text-sm text-text-primary">{user?.email}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-[#374151] mb-1">
+              <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-1">
                 이름
               </label>
               <input
@@ -87,8 +87,8 @@ export function ProfilePage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] transition-colors ${
-                  errors.name ? 'border-red-400' : 'border-[#E5E7EB]'
+                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] transition-colors ${
+                  errors.name ? 'border-red-400' : 'border-[#A3BDD8]'
                 }`}
               />
               {errors.name && (
@@ -99,7 +99,7 @@ export function ProfilePage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-[#374151] mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-text-primary mb-1">
                 새 비밀번호
               </label>
               <input
@@ -108,8 +108,8 @@ export function ProfilePage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="변경 시에만 입력"
-                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] transition-colors ${
-                  errors.password ? 'border-red-400' : 'border-[#E5E7EB]'
+                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] transition-colors ${
+                  errors.password ? 'border-red-400' : 'border-[#A3BDD8]'
                 }`}
               />
               {errors.password && (
@@ -120,7 +120,7 @@ export function ProfilePage() {
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#374151] mb-1">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-text-primary mb-1">
                 새 비밀번호 확인
               </label>
               <input
@@ -128,8 +128,8 @@ export function ProfilePage() {
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] transition-colors ${
-                  errors.confirmPassword ? 'border-red-400' : 'border-[#E5E7EB]'
+                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] transition-colors ${
+                  errors.confirmPassword ? 'border-red-400' : 'border-[#A3BDD8]'
                 }`}
               />
               {errors.confirmPassword && (
@@ -143,14 +143,14 @@ export function ProfilePage() {
               <button
                 type="button"
                 onClick={() => navigate('/')}
-                className="px-4 py-2 text-sm font-medium text-[#374151] border border-[#E5E7EB] rounded-[10px] hover:bg-[#F8F8F8] transition-colors"
+                className="px-4 py-2 text-sm font-medium text-text-primary border border-[#A3BDD8] rounded-[10px] hover:bg-bg-subtle transition-colors"
               >
                 취소
               </button>
               <button
                 type="submit"
                 disabled={updateMutation.isPending}
-                className="px-4 py-2 text-sm font-medium text-white bg-[#111827] rounded-[10px] hover:bg-[#374151] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 text-sm font-medium text-white bg-[#4A7AAF] rounded-[10px] hover:bg-[#3A6A9F] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {updateMutation.isPending ? '저장 중...' : '저장하기'}
               </button>
@@ -158,8 +158,8 @@ export function ProfilePage() {
           </form>
         </div>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[14px] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] mb-6">
-          <h2 className="text-base font-semibold text-[#111827] mb-4">카테고리 관리</h2>
+        <div className="bg-bg-base border border-[#A3BDD8] rounded-[14px] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] mb-6">
+          <h2 className="text-base font-semibold text-text-primary mb-4">카테고리 관리</h2>
           <CategoryList />
         </div>
 

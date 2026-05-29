@@ -65,7 +65,7 @@ export function SignupForm() {
       <div className="mb-4">
         <label
           htmlFor="signup-name"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-text-primary mb-1"
         >
           이름
         </label>
@@ -76,7 +76,7 @@ export function SignupForm() {
           onChange={(e) => setName(e.target.value)}
           placeholder="이름을 입력하세요"
           autoComplete="name"
-          className="w-full px-3 py-2 border border-gray-200 rounded-[10px] text-sm outline-none focus:border-blue-400"
+          className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm outline-none focus:border-blue-400"
         />
         {errors.name && (
           <p role="alert" className="mt-1 text-xs text-red-500">
@@ -88,7 +88,7 @@ export function SignupForm() {
       <div className="mb-4">
         <label
           htmlFor="signup-email"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-text-primary mb-1"
         >
           이메일
         </label>
@@ -99,7 +99,7 @@ export function SignupForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="이메일을 입력하세요"
           autoComplete="email"
-          className="w-full px-3 py-2 border border-gray-200 rounded-[10px] text-sm outline-none focus:border-blue-400"
+          className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm outline-none focus:border-blue-400"
         />
         {errors.email && (
           <p role="alert" className="mt-1 text-xs text-red-500">
@@ -111,7 +111,7 @@ export function SignupForm() {
       <div className="mb-4">
         <label
           htmlFor="signup-password"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-text-primary mb-1"
         >
           비밀번호
         </label>
@@ -122,7 +122,7 @@ export function SignupForm() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="8자 이상 입력하세요"
           autoComplete="new-password"
-          className="w-full px-3 py-2 border border-gray-200 rounded-[10px] text-sm outline-none focus:border-blue-400"
+          className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm outline-none focus:border-blue-400"
         />
         {errors.password && (
           <p role="alert" className="mt-1 text-xs text-red-500">
@@ -134,7 +134,7 @@ export function SignupForm() {
       <div className="mb-6">
         <label
           htmlFor="signup-confirm-password"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-text-primary mb-1"
         >
           비밀번호 확인
         </label>
@@ -145,7 +145,7 @@ export function SignupForm() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="비밀번호를 다시 입력하세요"
           autoComplete="new-password"
-          className="w-full px-3 py-2 border border-gray-200 rounded-[10px] text-sm outline-none focus:border-blue-400"
+          className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm outline-none focus:border-blue-400"
         />
         {errors.confirmPassword && (
           <p role="alert" className="mt-1 text-xs text-red-500">
@@ -163,12 +163,12 @@ export function SignupForm() {
       <button
         type="submit"
         disabled={signupMutation.isPending}
-        className="w-full py-2.5 bg-blue-600 text-white text-sm font-medium rounded-[10px] hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-2.5 bg-[#4A7AAF] text-white text-sm font-medium rounded-[10px] hover:bg-[#3A6A9F] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {signupMutation.isPending ? '가입 중...' : '가입하기'}
       </button>
 
-      <p className="mt-4 text-center text-sm text-gray-500">
+      <p className="mt-4 text-center text-sm text-text-secondary">
         이미 계정이 있으신가요?{' '}
         <Link to="/login" className="text-blue-600 font-medium hover:underline">
           로그인

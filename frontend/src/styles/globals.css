@@ -3,40 +3,42 @@
 @tailwind utilities;
 
 :root {
-  --color-bg-base:    #FFFFFF;
-  --color-bg-subtle:  #F8F8F8;
-  --color-bg-muted:   #F0F0F0;
-  --color-border:     #E5E7EB;
-  --color-border-focus: #9CA3AF;
-  --color-text-primary:   #111827;
-  --color-text-secondary: #6B7280;
-  --color-text-muted:     #9CA3AF;
+  --color-bg-base:    #DDEAF7;
+  --color-bg-subtle:  #C8DCF0;
+  --color-bg-muted:   #B8D0E9;
+  --color-border:     #A3BDD8;
+  --color-border-focus: #6B8CB8;
+  --color-text-primary:   #1E3A5F;
+  --color-text-secondary: #3A5F8A;
+  --color-text-muted:     #6B8CB8;
   --color-text-inverse:   #FFFFFF;
-  --color-primary:       #111827;
-  --color-primary-hover: #374151;
+  --color-primary:       #4A7AAF;
+  --color-primary-hover: #3A6A9F;
   --color-danger:        #EF4444;
   --color-danger-hover:  #DC2626;
   --color-danger-bg:     #FEF2F2;
-  --color-disabled-bg:   #F3F4F6;
-  --color-disabled-text: #9CA3AF;
-  --color-not-started-dot:  #9CA3AF;
-  --color-in-progress-dot:  #3B82F6;
+  --color-disabled-bg:   #C8DCF0;
+  --color-disabled-text: #8AAFD0;
+  --color-not-started-dot:  #8AAFD0;
+  --color-in-progress-dot:  #4A7AAF;
   --color-completed-dot:    #22C55E;
   --color-overdue-dot:      #F97316;
 }
 
 [data-theme="dark"] {
-  --color-bg-base:    #1C1C1E;
-  --color-bg-subtle:  #2C2C2E;
-  --color-bg-muted:   #3A3A3C;
-  --color-border:      #38383A;
-  --color-border-focus: #636366;
-  --color-text-primary:   #F2F2F7;
-  --color-text-secondary: #8E8E93;
-  --color-text-muted:     #636366;
-  --color-text-inverse:   #1C1C1E;
-  --color-primary:       #F2F2F7;
-  --color-primary-hover: #D1D1D6;
+  --color-bg-base:    #1A2B3F;
+  --color-bg-subtle:  #213449;
+  --color-bg-muted:   #2A3F57;
+  --color-border:      #334D66;
+  --color-border-focus: #5580A8;
+  --color-text-primary:   #D6E8F7;
+  --color-text-secondary: #9BBDD8;
+  --color-text-muted:     #6B8CB8;
+  --color-text-inverse:   #1A2B3F;
+  --color-primary:       #6B9FCC;
+  --color-primary-hover: #82AED6;
+  --color-disabled-bg:   #2A3F57;
+  --color-disabled-text: #4E6F8F;
   --color-danger-bg: rgba(239,68,68,0.15);
 }
 

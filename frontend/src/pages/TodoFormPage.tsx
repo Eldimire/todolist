@@ -99,13 +99,13 @@ export function TodoFormPage() {
       <div className="max-w-[600px] mx-auto">
         <button
           onClick={() => navigate('/')}
-          className="mb-4 text-sm text-[#6B7280] hover:text-[#111827] transition-colors"
+          className="mb-4 text-sm text-text-secondary hover:text-text-primary transition-colors"
         >
           ← 목록으로
         </button>
 
-        <div className="bg-white border border-[#E5E7EB] rounded-[14px] p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-          <h1 className="text-lg font-bold text-[#111827] mb-6">
+        <div className="bg-bg-base border border-[#A3BDD8] rounded-[14px] p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+          <h1 className="text-lg font-bold text-text-primary mb-6">
             {isEditMode ? '할일 수정' : '할일 등록'}
           </h1>
 
@@ -117,7 +117,7 @@ export function TodoFormPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-[#374151] mb-1">
+              <label htmlFor="title" className="block text-sm font-medium text-text-primary mb-1">
                 제목
               </label>
               <input
@@ -126,8 +126,8 @@ export function TodoFormPage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 maxLength={200}
-                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] transition-colors ${
-                  errors.title ? 'border-red-400' : 'border-[#E5E7EB]'
+                className={`w-full px-3 py-2 border rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] transition-colors ${
+                  errors.title ? 'border-red-400' : 'border-[#A3BDD8]'
                 }`}
               />
               {errors.title && (
@@ -138,7 +138,7 @@ export function TodoFormPage() {
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-[#374151] mb-1">
+              <label htmlFor="description" className="block text-sm font-medium text-text-primary mb-1">
                 설명
               </label>
               <textarea
@@ -147,19 +147,19 @@ export function TodoFormPage() {
                 onChange={(e) => setDescription(e.target.value)}
                 maxLength={2000}
                 rows={4}
-                className="w-full px-3 py-2 border border-[#E5E7EB] rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] transition-colors resize-none"
+                className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] transition-colors resize-none"
               />
             </div>
 
             <div>
-              <label htmlFor="categoryId" className="block text-sm font-medium text-[#374151] mb-1">
+              <label htmlFor="categoryId" className="block text-sm font-medium text-text-primary mb-1">
                 카테고리
               </label>
               <select
                 id="categoryId"
                 value={categoryId}
                 onChange={(e) => setCategoryId(e.target.value)}
-                className="w-full px-3 py-2 border border-[#E5E7EB] rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] bg-white transition-colors"
+                className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] bg-bg-base transition-colors"
               >
                 <option value="">카테고리 선택</option>
                 {categories.map((cat) => (
@@ -172,7 +172,7 @@ export function TodoFormPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="startDate" className="block text-sm font-medium text-[#374151] mb-1">
+                <label htmlFor="startDate" className="block text-sm font-medium text-text-primary mb-1">
                   시작일자
                 </label>
                 <input
@@ -180,8 +180,8 @@ export function TodoFormPage() {
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className={`w-full px-3 py-2 border rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] transition-colors ${
-                    errors.startDate ? 'border-red-400' : 'border-[#E5E7EB]'
+                  className={`w-full px-3 py-2 border rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] transition-colors ${
+                    errors.startDate ? 'border-red-400' : 'border-[#A3BDD8]'
                   }`}
                 />
                 {errors.startDate && (
@@ -192,7 +192,7 @@ export function TodoFormPage() {
               </div>
 
               <div>
-                <label htmlFor="endDate" className="block text-sm font-medium text-[#374151] mb-1">
+                <label htmlFor="endDate" className="block text-sm font-medium text-text-primary mb-1">
                   종료일자
                 </label>
                 <input
@@ -200,8 +200,8 @@ export function TodoFormPage() {
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className={`w-full px-3 py-2 border rounded-[10px] text-sm text-[#111827] outline-none focus:border-[#9CA3AF] transition-colors ${
-                    errors.endDate ? 'border-red-400' : 'border-[#E5E7EB]'
+                  className={`w-full px-3 py-2 border rounded-[10px] text-sm text-text-primary outline-none focus:border-[#9CA3AF] transition-colors ${
+                    errors.endDate ? 'border-red-400' : 'border-[#A3BDD8]'
                   }`}
                 />
                 {errors.endDate && (
@@ -216,14 +216,14 @@ export function TodoFormPage() {
               <button
                 type="button"
                 onClick={() => navigate('/')}
-                className="px-4 py-2 text-sm font-medium text-[#374151] border border-[#E5E7EB] rounded-[10px] hover:bg-[#F8F8F8] transition-colors"
+                className="px-4 py-2 text-sm font-medium text-text-primary border border-[#A3BDD8] rounded-[10px] hover:bg-bg-subtle transition-colors"
               >
                 취소
               </button>
               <button
                 type="submit"
                 disabled={isPending}
-                className="px-4 py-2 text-sm font-medium text-white bg-[#111827] rounded-[10px] hover:bg-[#374151] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 text-sm font-medium text-white bg-[#4A7AAF] rounded-[10px] hover:bg-[#3A6A9F] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isPending ? '저장 중...' : '저장하기'}
               </button>

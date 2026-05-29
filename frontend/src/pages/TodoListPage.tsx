@@ -43,15 +43,15 @@ export function TodoListPage() {
   return (
     <MainLayout>
       <div className="mb-6">
-        <div className="flex gap-1 p-1 bg-[#F8F8F8] rounded-[10px] overflow-x-auto">
+        <div className="flex gap-1 p-1 bg-bg-subtle rounded-[10px] overflow-x-auto">
           {FILTER_TABS.map((tab) => (
             <button
               key={tab.key}
               onClick={() => handleFilterClick(tab.key)}
               className={`shrink-0 px-3.5 py-1.5 rounded-[6px] text-sm font-medium transition-colors ${
                 activeFilter === tab.key
-                  ? 'bg-white text-[#111827] shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
-                  : 'text-[#6B7280] hover:text-[#111827]'
+                  ? 'bg-bg-base text-text-primary shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
+                  : 'text-text-secondary hover:text-text-primary'
               }`}
             >
               {tab.label}
@@ -65,7 +65,7 @@ export function TodoListPage() {
               aria-label="카테고리 선택"
               value={selectedCategoryId ?? ''}
               onChange={(e) => setCategory(e.target.value || null)}
-              className="w-full sm:w-auto px-3 py-2 text-sm border border-[#E5E7EB] rounded-[10px] outline-none focus:border-[#9CA3AF] bg-white text-[#111827]"
+              className="w-full sm:w-auto px-3 py-2 text-sm border border-[#A3BDD8] rounded-[10px] outline-none focus:border-[#9CA3AF] bg-bg-base text-text-primary"
             >
               <option value="">전체 카테고리</option>
               {categories.map((cat) => (
@@ -81,7 +81,7 @@ export function TodoListPage() {
       <div className="flex justify-end mb-4">
         <button
           onClick={() => navigate('/todos/new')}
-          className="px-4 py-2 text-sm font-medium text-white bg-[#111827] rounded-[10px] hover:bg-[#374151] transition-colors"
+          className="px-4 py-2 text-sm font-medium text-white bg-[#4A7AAF] rounded-[10px] hover:bg-[#3A6A9F] transition-colors"
         >
           + 할일 추가
         </button>
@@ -92,10 +92,10 @@ export function TodoListPage() {
           할일을 불러오는 중 오류가 발생했습니다.
         </p>
       ) : isLoading ? (
-        <p className="text-sm text-[#6B7280] text-center py-8">할일을 불러오는 중...</p>
+        <p className="text-sm text-text-secondary text-center py-8">할일을 불러오는 중...</p>
       ) : todos.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-sm text-[#6B7280]">할일이 없습니다.</p>
+          <p className="text-sm text-text-secondary">할일이 없습니다.</p>
           <button
             onClick={() => navigate('/todos/new')}
             className="mt-3 text-sm text-blue-600 hover:underline"

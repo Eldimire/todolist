@@ -69,7 +69,7 @@ export function CategoryList() {
   }
 
   if (isLoading) {
-    return <p className="text-sm text-[#6B7280]">카테고리를 불러오는 중...</p>;
+    return <p className="text-sm text-text-secondary">카테고리를 불러오는 중...</p>;
   }
 
   return (
@@ -84,7 +84,7 @@ export function CategoryList() {
         {categories.map((category) => (
           <li
             key={category.id}
-            className="flex items-center gap-2 p-3 bg-white border border-[#E5E7EB] rounded-[10px]"
+            className="flex items-center gap-2 p-3 bg-bg-base border border-[#A3BDD8] rounded-[10px]"
           >
             {editingId === category.id ? (
               <>
@@ -92,7 +92,7 @@ export function CategoryList() {
                   aria-label="카테고리 이름 수정"
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="flex-1 px-2 py-1 text-sm border border-[#E5E7EB] rounded-[6px] outline-none focus:border-blue-400"
+                  className="flex-1 px-2 py-1 text-sm border border-[#A3BDD8] rounded-[6px] outline-none focus:border-blue-400"
                 />
                 <button
                   onClick={() => handleUpdate(category.id)}
@@ -103,16 +103,16 @@ export function CategoryList() {
                 </button>
                 <button
                   onClick={cancelEdit}
-                  className="text-xs text-[#6B7280] hover:text-[#111827]"
+                  className="text-xs text-text-secondary hover:text-text-primary"
                 >
                   취소
                 </button>
               </>
             ) : (
               <>
-                <span className="flex-1 text-sm text-[#111827]">{category.name}</span>
+                <span className="flex-1 text-sm text-text-primary">{category.name}</span>
                 {category.is_default && (
-                  <span className="text-xs text-[#6B7280] bg-[#F0F0F0] px-2 py-0.5 rounded-[6px]">
+                  <span className="text-xs text-text-secondary bg-bg-muted px-2 py-0.5 rounded-[6px]">
                     기본
                   </span>
                 )}
@@ -120,7 +120,7 @@ export function CategoryList() {
                   <>
                     <button
                       onClick={() => startEdit(category)}
-                      className="text-xs text-[#6B7280] hover:text-[#111827]"
+                      className="text-xs text-text-secondary hover:text-text-primary"
                     >
                       수정
                     </button>
@@ -145,12 +145,12 @@ export function CategoryList() {
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
           placeholder="새 카테고리 이름"
-          className="flex-1 px-3 py-2 text-sm border border-[#E5E7EB] rounded-[10px] outline-none focus:border-blue-400"
+          className="flex-1 px-3 py-2 text-sm border border-[#A3BDD8] rounded-[10px] outline-none focus:border-blue-400"
         />
         <button
           type="submit"
           disabled={create.isPending || !newName.trim()}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-[10px] hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-2 text-sm font-medium text-white bg-[#4A7AAF] rounded-[10px] hover:bg-[#3A6A9F] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           추가
         </button>

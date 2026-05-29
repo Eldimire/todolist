@@ -48,7 +48,7 @@ export function LoginForm() {
       <div className="mb-4">
         <label
           htmlFor="login-email"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-text-primary mb-1"
         >
           이메일
         </label>
@@ -59,7 +59,7 @@ export function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="이메일을 입력하세요"
           autoComplete="email"
-          className="w-full px-3 py-2 border border-gray-200 rounded-[10px] text-sm outline-none focus:border-blue-400"
+          className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm outline-none focus:border-blue-400"
         />
         {errors.email && (
           <p role="alert" className="mt-1 text-xs text-red-500">
@@ -71,7 +71,7 @@ export function LoginForm() {
       <div className="mb-6">
         <label
           htmlFor="login-password"
-          className="block text-sm font-medium text-gray-700 mb-1"
+          className="block text-sm font-medium text-text-primary mb-1"
         >
           비밀번호
         </label>
@@ -82,7 +82,7 @@ export function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="비밀번호를 입력하세요"
           autoComplete="current-password"
-          className="w-full px-3 py-2 border border-gray-200 rounded-[10px] text-sm outline-none focus:border-blue-400"
+          className="w-full px-3 py-2 border border-[#A3BDD8] rounded-[10px] text-sm outline-none focus:border-blue-400"
         />
         {errors.password && (
           <p role="alert" className="mt-1 text-xs text-red-500">
@@ -100,12 +100,12 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={loginMutation.isPending}
-        className="w-full py-2.5 bg-blue-600 text-white text-sm font-medium rounded-[10px] hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-2.5 bg-[#4A7AAF] text-white text-sm font-medium rounded-[10px] hover:bg-[#3A6A9F] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loginMutation.isPending ? '로그인 중...' : '로그인'}
       </button>
 
-      <p className="mt-4 text-center text-sm text-gray-500">
+      <p className="mt-4 text-center text-sm text-text-secondary">
         계정이 없으신가요?{' '}
         <Link to="/signup" className="text-blue-600 font-medium hover:underline">
           회원가입

@@ -9,28 +9,28 @@ export function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <header className="h-14 bg-white border-b border-[#E5E7EB] flex items-center justify-between px-4 md:px-8">
-      <Link to="/" className="text-lg font-bold text-[#111827]">
+    <header className="h-14 bg-bg-base border-b border-[#A3BDD8] flex items-center justify-between px-4 md:px-8">
+      <Link to="/" className="text-lg font-bold text-text-primary">
         TodoList
       </Link>
 
       {/* 태블릿/데스크톱 네비게이션 */}
       <nav className="hidden md:flex items-center gap-4">
         {user && (
-          <span className="text-sm text-[#6B7280]">
+          <span className="text-sm text-text-secondary">
             안녕하세요, {user.name}님
           </span>
         )}
         <Link
           to="/profile"
-          className="text-sm text-[#6B7280] hover:text-[#111827] transition-colors"
+          className="text-sm text-text-secondary hover:text-text-primary transition-colors"
         >
           내 정보 수정
         </Link>
         <button
           onClick={() => logoutMutation.mutate()}
           disabled={logoutMutation.isPending}
-          className="text-sm text-[#6B7280] hover:text-[#111827] transition-colors disabled:opacity-50"
+          className="text-sm text-text-secondary hover:text-text-primary transition-colors disabled:opacity-50"
         >
           로그아웃
         </button>
@@ -38,7 +38,7 @@ export function Header() {
 
       {/* 모바일 햄버거 버튼 */}
       <button
-        className="md:hidden p-2 text-[#374151] text-xl leading-none"
+        className="md:hidden p-2 text-text-primary text-xl leading-none"
         onClick={() => setDrawerOpen(true)}
         aria-label="메뉴 열기"
       >
@@ -52,19 +52,19 @@ export function Header() {
             className="fixed inset-0 bg-black/30 z-40 md:hidden"
             onClick={() => setDrawerOpen(false)}
           />
-          <div className="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg md:hidden flex flex-col">
-            <div className="flex items-center justify-between px-5 py-4 border-b border-[#E5E7EB]">
-              <span className="font-bold text-[#111827]">메뉴</span>
+          <div className="fixed top-0 right-0 h-full w-64 bg-bg-base z-50 shadow-lg md:hidden flex flex-col">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#A3BDD8]">
+              <span className="font-bold text-text-primary">메뉴</span>
               <button
                 onClick={() => setDrawerOpen(false)}
                 aria-label="메뉴 닫기"
-                className="text-[#6B7280] text-xl leading-none"
+                className="text-text-secondary text-xl leading-none"
               >
                 ✕
               </button>
             </div>
             {user && (
-              <p className="px-5 py-3 text-sm text-[#6B7280] border-b border-[#F3F4F6]">
+              <p className="px-5 py-3 text-sm text-text-secondary border-b border-[#A3BDD8]">
                 안녕하세요, {user.name}님
               </p>
             )}
@@ -72,7 +72,7 @@ export function Header() {
               <Link
                 to="/profile"
                 onClick={() => setDrawerOpen(false)}
-                className="py-3 text-sm text-[#374151] hover:text-[#111827] transition-colors border-b border-[#F3F4F6]"
+                className="py-3 text-sm text-text-primary hover:text-text-primary transition-colors border-b border-[#A3BDD8]"
               >
                 내 정보 수정
               </Link>
